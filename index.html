@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rakesh G | AI • ML • Data Science Portfolio</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-200">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full bg-black/70 backdrop-blur border-b border-gray-800 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <h1 class="font-bold text-lg">Rakesh G</h1>
+    <div class="space-x-6 text-sm hidden md:block">
+      <a href="#about" class="hover:text-indigo-400">About</a>
+      <a href="#skills" class="hover:text-indigo-400">Skills</a>
+      <a href="#projects" class="hover:text-indigo-400">Projects</a>
+      <a href="#experience" class="hover:text-indigo-400">Experience</a>
+      <a href="#certifications" class="hover:text-indigo-400">Certifications</a>
+      <a href="resume.pdf" class="bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-700">
+        Resume
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center text-center px-6 pt-24 fade-in">
+  <div class="max-w-4xl">
+    <h1 class="text-6xl md:text-7xl font-extrabold mb-6 leading-tight">
+      <span class="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+        AI • ML • Data Science
+      </span>
+    </h1>
+
+    <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
+      Turning data into intelligent systems & real-world insights
+    </p>
+
+    <p class="mt-6 text-gray-300 text-lg">
+      Rakesh G · Data Science Student
+    </p>
+
+    <div class="mt-10 flex justify-center gap-6 flex-wrap">
+      <a href="#projects"
+         class="px-6 py-3 bg-indigo-600 rounded-xl hover:bg-indigo-700 transition">
+        View Projects
+      </a>
+      <a href="resume.pdf"
+         class="px-6 py-3 border border-gray-700 rounded-xl hover:border-indigo-500 transition">
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="max-w-7xl mx-auto px-6 py-24 fade-in">
+  <h2 class="text-3xl font-bold mb-6">About Me</h2>
+  <p class="text-gray-400 leading-relaxed max-w-4xl">
+    Skilled and detail-oriented Data Science fresher with experience in
+    AI, Machine Learning, NLP, and data analytics. Passionate about building
+    intelligent solutions and transforming data into meaningful insights
+    that solve real-world problems.
+  </p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="bg-gray-900/60 py-24 fade-in">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12">Skills</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 bg-black/40 border border-gray-800 rounded-2xl">
+        <h3 class="text-indigo-400 font-semibold mb-3">Programming</h3>
+        <ul class="text-gray-400 space-y-1">
+          <li>Python</li>
+          <li>SQL</li>
+          <li>JavaScript</li>
+          <li>Flask, Express.js</li>
+        </ul>
+      </div>
+
+      <div class="p-6 bg-black/40 border border-gray-800 rounded-2xl">
+        <h3 class="text-indigo-400 font-semibold mb-3">AI / ML</h3>
+        <ul class="text-gray-400 space-y-1">
+          <li>Machine Learning</li>
+          <li>Deep Learning (LSTM)</li>
+          <li>NLP</li>
+          <li>Model Evaluation</li>
+        </ul>
+      </div>
+
+      <div class="p-6 bg-black/40 border border-gray-800 rounded-2xl">
+        <h3 class="text-indigo-400 font-semibold mb-3">Tools</h3>
+        <ul class="text-gray-400 space-y-1">
+          <li>Pandas, NumPy</li>
+          <li>Matplotlib</li>
+          <li>Excel</li>
+          <li>Git & GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="max-w-7xl mx-auto px-6 py-24 fade-in">
+  <h2 class="text-3xl font-bold mb-12">Projects</h2>
+
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <div class="p-6 bg-black/40 border border-gray-800 rounded-2xl hover:border-indigo-500 transition">
+      <h3 class="text-indigo-400 font-semibold text-xl">
+        Menu vs Delivery NLP Analysis
+      </h3>
+      <p class="text-gray-400 mt-3">
+        NLP analysis of food app reviews to compare menu quality vs delivery impact.
+      </p>
+      <a href="https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis"
+         target="_blank" class="inline-block mt-4 text-indigo-400 underline">
+        GitHub →
+      </a>
+    </div>
+
+    <div class="p-6 bg-black/40 border border-gray-800 rounded-2xl hover:border-indigo-500 transition">
+      <h3 class="text-indigo-400 font-semibold text-xl">
+        Stock Market Prediction (LSTM)
+      </h3>
+      <p class="text-gray-400 mt-3">
+        Time-series forecasting using LSTM neural networks.
+      </p>
+      <a href="https://github.com/Rakesh-developer28/stock_prediction"
+         target="_blank" class="inline-block mt-4 text-indigo-400 underline">
+        GitHub →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="bg-gray-900/60 py-24 fade-in">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12">Experience</h2>
+
+    <div class="border-l-2 border-indigo-500 pl-6 mb-10">
+      <h3 class="text-indigo-400 text-xl font-semibold">
+        Data Analyst Intern — Tech Vaseegrah
+      </h3>
+      <p class="text-sm text-gray-400">Jul 2024 – Aug 2024</p>
+      <ul class="list-disc ml-6 mt-3 text-gray-400">
+        <li>Analyzed data using Python, SQL, and Excel</li>
+        <li>Built Flask-based billing and dashboard application</li>
+        <li>Created interactive dashboards</li>
+      </ul>
+    </div>
+
+    <div class="border-l-2 border-indigo-500 pl-6">
+      <h3 class="text-indigo-400 text-xl font-semibold">
+        AI & Machine Learning Training — Rexroth Bosch Group
+      </h3>
+      <p class="text-sm text-gray-400">Dec 2024 – Jan 2025</p>
+      <ul class="list-disc ml-6 mt-3 text-gray-400">
+        <li>Hands-on AI & ML training</li>
+        <li>Worked with real datasets and ML models</li>
+        <li>Applied ML to real-world use cases</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="max-w-7xl mx-auto px-6 py-24 fade-in">
+  <h2 class="text-3xl font-bold mb-6">Certifications</h2>
+  <ul class="text-gray-400 space-y-2">
+    <li>Python for Data Analysis (Hands-on)</li>
+    <li>Big Data Analysis – Practical Training</li>
+    <li>Data Science – Comprehensive Program</li>
+    <li>Google Analytics – Advanced</li>
+  </ul>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="text-center py-24 fade-in">
+  <h2 class="text-3xl font-bold mb-6">Contact</h2>
+  <p class="text-gray-400 mb-2">📧 rakesh28.dev@gmail.com</p>
+  <a href="https://www.linkedin.com/in/rakeshgdev"
+     target="_blank" class="text-indigo-400 underline">
+    LinkedIn Profile
+  </a>
+</section>
+
+<footer class="text-center py-6 text-gray-500">
+  © 2026 Rakesh G | AI • ML • Data Science
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
