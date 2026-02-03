@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rakesh G | AI • ML • Data Science Portfolio</title>
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -14,8 +16,12 @@
       font-family: 'Inter', sans-serif;
       transition: background-color 0.4s ease, color 0.4s ease;
     }
-    html { scroll-behavior: smooth; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Scroll Animation */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -26,22 +32,39 @@
       transform: translateY(0);
     }
 
+    /* Light Mode */
     .light body {
-      background: #f3f4f6 !important;
-      color: #111827 !important;
+      background: #f3f4f6;
+      color: #111827;
     }
-    .light section { background: #ffffff !important; }
-    .light .bg-gray-900\/60 { background: #f9fafb !important; }
+    .light section {
+      background: #ffffff;
+    }
+    .light .bg-gray-900\/60 {
+      background: #f9fafb;
+    }
     .light .bg-black\/40 {
-      background: #ffffff !important;
-      border-color: #e5e7eb !important;
-    }
-    .light .text-gray-400, .light .text-gray-300 {
-      color: #4b5563 !important;
+      background: #ffffff;
+      border-color: #e5e7eb;
     }
     .light nav {
-      background: rgba(255, 255, 255, 0.8) !important;
+      background: rgba(255,255,255,0.9);
       border-bottom: 1px solid #e5e7eb;
+    }
+    .light .text-gray-400,
+    .light .text-gray-300 {
+      color: #4b5563;
+    }
+
+    /* 🔥 MOBILE FIX (MOST IMPORTANT) */
+    @media (max-width: 768px) {
+      .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      section {
+        scroll-margin-top: 90px;
+      }
     }
   </style>
 </head>
@@ -53,21 +76,19 @@
   <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
     <h1 class="font-bold text-xl">Rakesh G</h1>
 
-    <div class="flex items-center space-x-6">
-      <div class="space-x-6 text-sm hidden md:flex items-center">
+    <div class="flex items-center gap-4">
+      <div class="hidden md:flex gap-6 text-sm">
         <a href="#about" class="hover:text-indigo-400">About</a>
         <a href="#skills" class="hover:text-indigo-400">Skills</a>
         <a href="#projects" class="hover:text-indigo-400">Projects</a>
         <a href="#experience" class="hover:text-indigo-400">Experience</a>
-
-        <!-- ✅ RESUME DOWNLOAD -->
         <a href="resume.pdf" download
-           class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
-          Download Resume
+           class="bg-indigo-600 px-4 py-2 rounded-lg text-white hover:bg-indigo-700">
+          Resume
         </a>
       </div>
 
-      <button id="themeToggle" class="p-2 border border-gray-700 rounded-full hover:bg-gray-800">
+      <button id="themeToggle" class="p-2 border border-gray-700 rounded-full">
         <span id="themeIcon">🌙</span>
       </button>
     </div>
@@ -75,7 +96,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center justify-center text-center px-6 pt-20 fade-in">
+<section class="min-h-[90vh] flex items-center justify-center text-center px-6 pt-24 fade-in relative">
   <div class="max-w-4xl">
     <h1 class="text-5xl md:text-7xl font-extrabold mb-6">
       <span class="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
@@ -87,95 +108,142 @@
       Turning data into intelligent systems & insights
     </p>
 
-    <p class="mt-6 text-gray-300 text-lg font-medium">
+    <p class="mt-4 text-gray-300 font-medium">
       Rakesh G · Data Science Student
     </p>
 
     <div class="mt-10 flex justify-center gap-6 flex-wrap">
       <a href="#projects"
-         class="px-8 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 shadow-lg">
+         class="px-8 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700">
         View Projects
       </a>
-
-      <!-- ✅ RESUME DOWNLOAD -->
       <a href="resume.pdf" download
          class="px-8 py-3 border border-gray-700 rounded-xl hover:border-indigo-500">
         Download Resume
       </a>
     </div>
   </div>
+
+  <!-- Mobile scroll hint -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-gray-400 animate-bounce md:hidden">
+    ↓ Scroll
+  </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="max-w-7xl mx-auto px-6 py-24 fade-in">
-  <h2 class="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4">About Me</h2>
+<section id="about" class="max-w-7xl mx-auto px-6 py-20 fade-in">
+  <h2 class="text-3xl font-bold mb-6 border-l-4 border-indigo-500 pl-4">About Me</h2>
   <p class="text-gray-400 text-lg max-w-4xl">
-    Data Science fresher skilled in AI, Machine Learning, NLP, and analytics.
-    Passionate about building intelligent solutions and real-world impact.
+    Data Science fresher passionate about AI, Machine Learning, NLP,
+    and analytics. I enjoy building intelligent solutions that
+    solve real-world problems.
   </p>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="bg-gray-900/60 py-24 fade-in">
+<section id="skills" class="bg-gray-900/60 py-20 fade-in">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-12">Technical Toolbox</h2>
+    <h2 class="text-3xl font-bold mb-10">Skills</h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="p-8 bg-black/40 border border-gray-800 rounded-2xl">
-        <h3 class="text-indigo-400 font-bold text-xl mb-4">Programming</h3>
-        <ul class="text-gray-400 space-y-2">
-          <li>• Python</li>
-          <li>• SQL</li>
-          <li>• JavaScript</li>
-          <li>• Flask</li>
-        </ul>
+    <div class="grid gap-8 md:grid-cols-3">
+      <div class="p-6 bg-black/40 border border-gray-800 rounded-xl">
+        <h3 class="text-indigo-400 font-bold mb-3">Programming</h3>
+        <p class="text-gray-400">Python, SQL, JavaScript, Flask</p>
       </div>
 
-      <div class="p-8 bg-black/40 border border-gray-800 rounded-2xl">
-        <h3 class="text-indigo-400 font-bold text-xl mb-4">AI / ML</h3>
-        <ul class="text-gray-400 space-y-2">
-          <li>• Machine Learning</li>
-          <li>• Deep Learning (LSTM)</li>
-          <li>• NLP</li>
-          <li>• Model Evaluation</li>
-        </ul>
+      <div class="p-6 bg-black/40 border border-gray-800 rounded-xl">
+        <h3 class="text-indigo-400 font-bold mb-3">AI / ML</h3>
+        <p class="text-gray-400">ML, Deep Learning (LSTM), NLP</p>
       </div>
 
-      <div class="p-8 bg-black/40 border border-gray-800 rounded-2xl">
-        <h3 class="text-indigo-400 font-bold text-xl mb-4">Tools</h3>
-        <ul class="text-gray-400 space-y-2">
-          <li>• Pandas, NumPy</li>
-          <li>• Matplotlib</li>
-          <li>• Power BI</li>
-          <li>• GitHub</li>
-        </ul>
+      <div class="p-6 bg-black/40 border border-gray-800 rounded-xl">
+        <h3 class="text-indigo-400 font-bold mb-3">Tools</h3>
+        <p class="text-gray-400">Pandas, NumPy, Git, Power BI</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PROJECTS -->
+<section id="projects" class="max-w-7xl mx-auto px-6 py-20 fade-in">
+  <h2 class="text-3xl font-bold mb-10">Projects</h2>
+
+  <div class="grid gap-8 md:grid-cols-2">
+    <div class="p-6 bg-black/40 border border-gray-800 rounded-xl">
+      <h3 class="text-indigo-400 font-bold text-xl">Menu vs Delivery NLP</h3>
+      <p class="text-gray-400 mt-3">
+        NLP analysis of food app reviews comparing menu quality vs delivery.
+      </p>
+      <a href="https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis"
+         target="_blank" class="inline-block mt-4 text-indigo-400 underline">
+        GitHub →
+      </a>
+    </div>
+
+    <div class="p-6 bg-black/40 border border-gray-800 rounded-xl">
+      <h3 class="text-indigo-400 font-bold text-xl">Stock Prediction (LSTM)</h3>
+      <p class="text-gray-400 mt-3">
+        Time-series forecasting using LSTM neural networks.
+      </p>
+      <a href="https://github.com/Rakesh-developer28/stock_prediction"
+         target="_blank" class="inline-block mt-4 text-indigo-400 underline">
+        GitHub →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="bg-gray-900/60 py-20 fade-in">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10">Experience</h2>
+
+    <div class="border-l-2 border-indigo-500 pl-6 mb-8">
+      <h3 class="text-indigo-400 font-bold">
+        Data Analyst Intern — Tech Vaseegrah
+      </h3>
+      <p class="text-gray-400 text-sm">Jul 2024 – Aug 2024</p>
+      <ul class="list-disc ml-5 mt-3 text-gray-400">
+        <li>Python, SQL, Excel analytics</li>
+        <li>Flask dashboard & billing system</li>
+      </ul>
+    </div>
+
+    <div class="border-l-2 border-indigo-500 pl-6">
+      <h3 class="text-indigo-400 font-bold">
+        AI & ML Trainee — Bosch Group
+      </h3>
+      <p class="text-gray-400 text-sm">Dec 2024 – Jan 2025</p>
+      <ul class="list-disc ml-5 mt-3 text-gray-400">
+        <li>Hands-on ML & deep learning</li>
+        <li>Industrial datasets & prediction</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
-<footer class="text-center py-10 border-t border-gray-800 text-gray-500 text-sm">
-  © 2026 Rakesh G | Built with Tailwind CSS
+<footer class="text-center py-8 text-gray-500 border-t border-gray-800">
+  © 2026 Rakesh G · AI • ML • Data Science
 </footer>
 
 <script>
-  const toggleBtn = document.getElementById("themeToggle");
-  const themeIcon = document.getElementById("themeIcon");
+  // Theme Toggle
+  const toggle = document.getElementById("themeToggle");
+  const icon = document.getElementById("themeIcon");
 
-  toggleBtn.addEventListener("click", () => {
+  toggle.onclick = () => {
     document.documentElement.classList.toggle("light");
-    themeIcon.textContent =
+    icon.textContent =
       document.documentElement.classList.contains("light") ? "☀️" : "🌙";
-  });
+  };
 
+  // Scroll Animation
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("show");
-    });
+    entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
   }, { threshold: 0.15 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 </script>
 
 </body>
