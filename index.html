@@ -11,20 +11,20 @@
 <style>
 body{font-family:'Inter',sans-serif}
 html{scroll-behavior:smooth}
-.fade{opacity:0;transform:translateY(25px);transition:all .8s ease}
+.fade{opacity:0;transform:translateY(30px);transition:all .8s ease}
 .fade.show{opacity:1;transform:none}
 
-/* Mobile safety */
+/* Mobile fix */
 @media(max-width:768px){
-.fade{opacity:1!important;transform:none!important}
-section{scroll-margin-top:90px}
+  .fade{opacity:1!important;transform:none!important}
+  section{scroll-margin-top:100px}
 }
 
 /* Light mode */
 .light body{background:#f3f4f6!important;color:#111827!important}
 .light section{background:#fff!important}
 .light .card{background:#f9fafb!important;border-color:#e5e7eb!important}
-.light nav{background:#ffffffdd!important;border-bottom:1px solid #e5e7eb}
+.light nav{background:#ffffffee!important;border-bottom:1px solid #e5e7eb}
 </style>
 </head>
 
@@ -32,186 +32,128 @@ section{scroll-margin-top:90px}
 
 <!-- NAV -->
 <nav class="fixed top-0 w-full bg-black/70 backdrop-blur border-b border-gray-800 z-50">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<h1 class="font-bold text-xl">Rakesh G</h1>
-<div class="flex gap-4 items-center">
-<a href="#projects" class="hidden md:block hover:text-indigo-400">Projects</a>
-<a href="resume.pdf" class="bg-indigo-600 px-4 py-2 rounded-lg text-white">Resume</a>
-<button id="toggle" class="border border-gray-700 rounded-full px-3">🌙</button>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="font-bold text-xl">Rakesh G</h1>
+
+    <div class="flex gap-4 items-center">
+      <a href="#experience" class="hidden md:block hover:text-indigo-400">Experience</a>
+      <a href="#projects" class="hidden md:block hover:text-indigo-400">Projects</a>
+      <a href="resume.pdf" class="bg-indigo-600 px-4 py-2 rounded-lg text-white">Resume</a>
+      <button id="toggle" class="border border-gray-700 rounded-full px-3">🌙</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center justify-center text-center px-6 pt-24 fade">
-<div>
-<h1 class="text-5xl md:text-7xl font-extrabold mb-6">
-<span class="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-AI • ML • Data Science
-</span>
-</h1>
-<p class="text-xl text-gray-400 max-w-3xl mx-auto">
-Turning data into intelligent systems and real-world insights
-</p>
-<p class="mt-4 text-gray-300">Rakesh G · Data Science Student</p>
+<section class="min-h-screen flex items-center justify-center text-center px-6 pt-28 fade">
+  <div>
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-6">
+      <span class="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+        AI • ML • Data Science
+      </span>
+    </h1>
+    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+      Turning data into intelligent systems and real-world insights
+    </p>
+    <p class="mt-4 text-gray-300">Rakesh G · Data Science Student</p>
 
-<div class="mt-8 flex justify-center gap-4 flex-wrap">
-<a href="#projects" class="px-8 py-3 bg-indigo-600 rounded-xl text-white">View Projects</a>
-<a href="resume.pdf" class="px-8 py-3 border border-gray-700 rounded-xl">Download Resume</a>
-</div>
-</div>
+    <div class="mt-8 flex justify-center gap-4 flex-wrap">
+      <a href="#projects" class="px-8 py-3 bg-indigo-600 rounded-xl text-white">View Projects</a>
+      <a href="resume.pdf" class="px-8 py-3 border border-gray-700 rounded-xl">Download Resume</a>
+    </div>
+  </div>
 </section>
 
 <!-- SUMMARY -->
 <section class="max-w-7xl mx-auto px-6 py-20 fade">
-<h2 class="text-3xl font-bold mb-6 border-l-4 border-indigo-500 pl-4">Summary</h2>
-<p class="text-gray-400 max-w-5xl leading-relaxed">
-Skilled and detail-oriented fresher with experience in software development
-and data analytics. Successfully delivered real-world projects by developing
-AI, ML, and NLP-based solutions and analyzing complex datasets to create
-actionable insights. Adept at aligning technical expertise with business
-needs and eager to contribute innovative solutions.
-</p>
+  <h2 class="text-3xl font-bold mb-6 border-l-4 border-indigo-500 pl-4">Summary</h2>
+  <p class="text-gray-400 max-w-5xl leading-relaxed">
+    Skilled and detail-oriented fresher with experience in software development and data analytics.
+    Successfully delivered real-world AI, ML, and NLP projects by transforming complex datasets
+    into actionable insights. Passionate about building intelligent systems aligned with business needs.
+  </p>
 </section>
 
 <!-- EDUCATION -->
 <section class="bg-gray-900/60 py-20 fade">
-<div class="max-w-7xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-10">Education</h2>
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10">Education</h2>
 
-<div class="grid md:grid-cols-2 gap-8">
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold text-xl">M.Sc Data Science</h3>
-<p>Periyar Maniammai University</p>
-<p class="text-sm text-gray-500">2025 – Present</p>
-</div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
+        <h3 class="text-indigo-400 font-semibold text-xl">Master of Science – Data Science</h3>
+        <p>Periyar Maniammai University</p>
+        <p class="text-sm text-gray-500">2022 – 2025</p>
+      </div>
 
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold text-xl">B.Sc Data Science</h3>
-<p>Periyar Maniammai University</p>
-<p class="text-sm text-gray-500">2022 – 2025</p>
-<p class="mt-2">CGPA: <span class="text-indigo-400 font-bold">7.51 / 10</span></p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- SKILLS -->
-<section class="max-w-7xl mx-auto px-6 py-20 fade">
-<h2 class="text-3xl font-bold mb-10">Skills</h2>
-
-<div class="grid md:grid-cols-3 gap-8">
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold">Technical</h3>
-<ul class="mt-3 text-gray-400 space-y-1">
-<li>Python, SQL</li>
-<li>JavaScript</li>
-<li>Flask, Express.js</li>
-<li>HTML, Tailwind CSS</li>
-</ul>
-</div>
-
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold">AI / Data</h3>
-<ul class="mt-3 text-gray-400 space-y-1">
-<li>Machine Learning</li>
-<li>Deep Learning (LSTM)</li>
-<li>NLP</li>
-<li>Data Analytics</li>
-</ul>
-</div>
-
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold">Soft Skills</h3>
-<ul class="mt-3 text-gray-400 space-y-1">
-<li>Problem-Solving</li>
-<li>Communication</li>
-<li>Adaptability</li>
-<li>Time Management</li>
-</ul>
-</div>
-</div>
+      <div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
+        <h3 class="text-indigo-400 font-semibold text-xl">Bachelor of Science – Data Science</h3>
+        <p>Periyar Maniammai University</p>
+        <p class="text-sm text-gray-500">2025 – Present</p>
+        <p class="mt-2">CGPA: <span class="text-indigo-400 font-bold">7.33 / 10</span></p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section class="bg-gray-900/60 py-20 fade">
-<div class="max-w-7xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-10">Experience</h2>
+<section id="experience" class="max-w-7xl mx-auto px-6 py-20 fade">
+  <h2 class="text-3xl font-bold mb-10">Experience</h2>
 
-<div class="border-l-2 border-indigo-500 pl-6">
-<h3 class="text-indigo-400 text-xl font-semibold">
-Data Analyst Intern — Tech Vaseegrah
-</h3>
-<p class="text-sm text-gray-400">Jul 2024 – Aug 2024 · Thanjavur</p>
-<ul class="list-disc ml-6 mt-4 text-gray-400 space-y-2">
-<li>Analyzed and visualized business data using Python, SQL, Excel</li>
-<li>Built Flask-based billing & dashboard web application</li>
-<li>Integrated authentication, visualization, and database modules</li>
-</ul>
-</div>
-</div>
-</section>
+  <div class="relative border-l-2 border-indigo-500 pl-8 space-y-12">
 
-<!-- VOLUNTEERING -->
-<section class="max-w-7xl mx-auto px-6 py-20 fade">
-<h2 class="text-3xl font-bold mb-10">Volunteering</h2>
+    <!-- Bosch -->
+    <div class="relative">
+      <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9px] top-1"></div>
+      <h3 class="text-indigo-400 text-xl font-bold">AI & ML Trainee — Rexroth Bosch Group</h3>
+      <p class="text-sm text-gray-500 mb-4">Dec 2024 – Jan 2025</p>
+      <ul class="list-disc ml-4 text-gray-400 space-y-2">
+        <li>Intensive training on industrial AI applications.</li>
+        <li>Worked with real-world sensor datasets for predictive ML models.</li>
+        <li>Applied deep learning techniques to manufacturing use cases.</li>
+      </ul>
+    </div>
 
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold">Class Representative</h3>
-<p class="text-gray-400">Periyar Maniammai Institute of Science & Technology</p>
-<p class="text-sm text-gray-500">2025 – Present</p>
-<ul class="list-disc ml-6 mt-3 text-gray-400 space-y-2">
-<li>Organized workshops and technical events</li>
-<li>Collaborated with university tech teams</li>
-<li>Supported departmental growth initiatives</li>
-</ul>
-</div>
+    <!-- Tech Vaseegrah -->
+    <div class="relative">
+      <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9px] top-1"></div>
+      <h3 class="text-indigo-400 text-xl font-bold">Data Analyst Intern — Tech Vaseegrah</h3>
+      <p class="text-sm text-gray-500 mb-4">Jul 2024 – Aug 2024 · Thanjavur</p>
+      <ul class="list-disc ml-4 text-gray-400 space-y-2">
+        <li>Analyzed and visualized business data using Python, SQL, and Excel.</li>
+        <li>Built Flask-based billing & dashboard web application.</li>
+        <li>Integrated authentication, analytics, and database connectivity.</li>
+      </ul>
+    </div>
+
+  </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="bg-gray-900/60 py-20 fade">
-<div class="max-w-7xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-10">Projects</h2>
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10">Projects</h2>
 
-<div class="grid md:grid-cols-2 gap-8">
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold text-xl">Stock Market Prediction (LSTM)</h3>
-<p class="mt-3 text-gray-400">
-Time-series forecasting using LSTM neural networks with preprocessing,
-feature engineering, and visualization.
-</p>
-<a href="https://github.com/Rakesh-developer28/stock_prediction" target="_blank"
-class="inline-block mt-4 text-indigo-400 underline">GitHub →</a>
-</div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
+        <h3 class="text-indigo-400 font-semibold text-xl">Stock Market Prediction (LSTM)</h3>
+        <p class="mt-3 text-gray-400">
+          Time-series forecasting using LSTM with preprocessing,
+          feature engineering, and interactive visualizations.
+        </p>
+        <a href="https://github.com/Rakesh-developer28/stock_prediction" target="_blank"
+           class="inline-block mt-4 text-indigo-400 underline">GitHub →</a>
+      </div>
 
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold text-xl">Fake Product Review Detection</h3>
-<p class="mt-3 text-gray-400">
-NLP-based classification of reviews using sentiment, ratings, and
-verification status.
-</p>
-</div>
-
-<div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
-<h3 class="text-indigo-400 font-semibold text-xl">Menu vs Delivery NLP Analysis</h3>
-<p class="mt-3 text-gray-400">
-Analyzed food app reviews to compare menu quality vs delivery impact.
-</p>
-<a href="https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis" target="_blank"
-class="inline-block mt-4 text-indigo-400 underline">GitHub →</a>
-</div>
-</div>
-</div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section class="max-w-7xl mx-auto px-6 py-20 fade">
-<h2 class="text-3xl font-bold mb-6">Certifications</h2>
-<ul class="text-gray-400 space-y-2">
-<li>Data Analysis with Python (Hands-on)</li>
-<li>Big Data Analysis & Data Science</li>
-<li>Google Analytics – Advanced</li>
-</ul>
+      <div class="card p-6 bg-black/40 border border-gray-800 rounded-xl">
+        <h3 class="text-indigo-400 font-semibold text-xl">Fake Product Review Detection</h3>
+        <p class="mt-3 text-gray-400">
+          NLP-based classification of fake vs genuine reviews using sentiment,
+          ratings, and verification status.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -220,12 +162,14 @@ class="inline-block mt-4 text-indigo-400 underline">GitHub →</a>
 </footer>
 
 <script>
-const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('show')),{threshold:.15})
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>x.isIntersecting&&x.target.classList.add('show'))
+},{threshold:.15})
 document.querySelectorAll('.fade').forEach(el=>obs.observe(el))
+
 document.getElementById('toggle').onclick=()=>{
-document.documentElement.classList.toggle('light')
-document.getElementById('toggle').textContent=
-document.documentElement.classList.contains('light')?'☀️':'🌙'
+  document.documentElement.classList.toggle('light')
+  toggle.textContent=document.documentElement.classList.contains('light')?'☀️':'🌙'
 }
 </script>
 
