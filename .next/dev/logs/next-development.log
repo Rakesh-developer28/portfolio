@@ -1,0 +1,51 @@
+[00:00:00.790] Server  LOG     ✓ Ready in 522ms
+[00:03:40.768] Server  LOG     ✓ Compiled in 321ms
+[00:04:00.276] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:04:05.209] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:04:13.345] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:04:16.624] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:04:18.365] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:04:19.309] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:04:21.059] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:07.475] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:47.395] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:56.240] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:57.197] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:57.197] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:57.959] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:58.360] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:58.639] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:58.787] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:59.058] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:59.375] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:59.593] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:59.815] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:06:59.975] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:07:00.565] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:08:47.510] Browser WARN    'lab(16.1051 -1.18239 -11.7533)' is not an animatable color. Use the equivalent color code instead.
+[00:08:53.977] Browser ERROR   Warning: Prop `%s` did not match. Server: %s Client: %s%s className "font-bold text-xl tracking-tighter" "text-xl font-bold" 
+    at h1
+    at div
+    at nav
+    at Navbar (http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__00e2b7db._.js?id=%255Bproject%255D%252Fcomponents%252FNavbar.js+%255Bclient%255D+%2528ecmascript%2529:15:168)
+    at div
+    at Home (http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__00e2b7db._.js?id=%255Bproject%255D%252Fpages%252Findex.js+%255Bclient%255D+%2528ecmascript%2529:22:190)
+    at App (http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__01feb856._.js:475:16)
+    at PathnameContextProviderAdapter (http://localhost:3000/_next/static/chunks/node_modules_next_dist_shared_lib_8bac8163._.js:5355:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:3000/_next/static/chunks/node_modules_next_dist_75b597d7._.js:1117:9)
+    at PagesDevOverlayBridge (http://localhost:3000/_next/static/chunks/node_modules_next_dist_75b597d7._.js:1894:34)
+    at Container (http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_5a8a528e._.js:3085:1)
+    at AppContainer (http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_5a8a528e._.js:3184:25)
+    at Root (http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_5a8a528e._.js:3392:17)
+[00:08:53.977] Browser ERROR   Warning: An error occurred during hydration. The server HTML was replaced with client content in <%s>. div
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Text content does not match server-rendered HTML.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Text content does not match server-rendered HTML.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Text content does not match server-rendered HTML.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Hydration failed because the initial UI does not match what was rendered on the server.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Hydration failed because the initial UI does not match what was rendered on the server.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Hydration failed because the initial UI does not match what was rendered on the server.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Hydration failed because the initial UI does not match what was rendered on the server.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Hydration failed because the initial UI does not match what was rendered on the server.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Hydration failed because the initial UI does not match what was rendered on the server.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: Hydration failed because the initial UI does not match what was rendered on the server.
+[00:08:53.977] Browser ERROR   uncaughtError: Error: There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.
