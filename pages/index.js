@@ -15,6 +15,7 @@ const Navbar = () => {
           <a href="#skills" className="hover:text-indigo-400 transition">Skills</a>
           <a href="#experience" className="hover:text-indigo-400 transition">Experience</a>
           <a href="#projects" className="hover:text-indigo-400 transition">Projects</a>
+          <a href="#contact" className="hover:text-indigo-400 transition">Connect</a>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl text-white">
           {isOpen ? "✕" : "☰"}
@@ -34,6 +35,7 @@ const Navbar = () => {
               <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
               <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
               <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
+              <a href="#contact" onClick={() => setIsOpen(false)}>Connect</a>
             </div>
           </motion.div>
         )}
@@ -73,6 +75,14 @@ const ProjectModal = ({ project, onClose }) => (
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [formStatus, setFormStatus] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormStatus("Sending...");
+    // Mocking an email send - you can connect this to Formspree or EmailJS later
+    setTimeout(() => setFormStatus("Message sent successfully!"), 1500);
+  };
 
   const skills = [
     { name: "Python", level: 90 },
@@ -172,62 +182,44 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* EXPANDED SUMMARY */}
+      {/* SUMMARY */}
       <section id="about" className="max-w-7xl mx-auto px-6 py-24">
         <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4 text-white">Professional Summary</h2>
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
             <p className="text-gray-400 text-lg leading-relaxed mb-6">
-              I am a results-driven <span className="text-indigo-400 font-semibold">Data Science professional</span> currently pursuing my M.Sc. at <span className="text-indigo-400">Periyar Maniammai Institute of Science & Technology</span>. 
-              My expertise lies at the intersection of <span className="text-indigo-400 font-semibold">Software Engineering</span> and <span className="text-indigo-400 font-semibold">Advanced Analytics</span>, where I transform complex, unstructured datasets into 
+              I am a results-driven <span className="text-indigo-400 font-semibold">Data Science professional</span> currently pursuing my M.Sc. at <span className="text-indigo-400">Periyar Maniammai Institute of Science & Technology</span>.
+              My expertise lies at the intersection of <span className="text-indigo-400 font-semibold">Software Engineering</span> and <span className="text-indigo-400 font-semibold">Advanced Analytics</span>, where I transform complex datasets into 
               actionable intelligence.
             </p>
             <p className="text-gray-400 text-lg leading-relaxed">
-              With hands-on experience in building <span className="text-indigo-400 font-semibold">Deep Learning (LSTM)</span> architectures for stock forecasting and <span className="text-indigo-400 font-semibold">NLP models</span> for fraud detection, 
-              I have demonstrated the ability to align technical innovation with business objectives. My background includes a successful tenure as a 
-              <span className="text-indigo-400 font-semibold">Data Analyst Intern at Tech Vaseegrah</span>, where I developed full-stack billing solutions and interactive dashboards.
+              With experience building <span className="text-indigo-400 font-semibold">LSTM</span> models for stock forecasting and <span className="text-indigo-400 font-semibold">NLP models</span> for fraud detection, 
+              I align technical innovation with business objectives.
             </p>
           </div>
-          
           <div className="bg-indigo-500/5 border border-indigo-500/20 p-8 rounded-3xl">
             <h4 className="text-white font-bold mb-4">Core Focus Areas</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
-                Predictive Modeling (LSTM & ML)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
-                Natural Language Processing (NLP)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
-                Full-Stack Data Web Apps (Flask)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
-                Time-Series & Sentiment Analysis
-              </li>
+              <li className="flex items-center gap-2">Predictive Modeling (LSTM & ML)</li>
+              <li className="flex items-center gap-2">Natural Language Processing (NLP)</li>
+              <li className="flex items-center gap-2">Full-Stack Data Web Apps (Flask)</li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* EDUCATION JOURNEY TIMELINE */}
+      {/* EDUCATION */}
       <section id="education" className="bg-gray-900/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Education Journey</h2>
           <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
             {education.map((edu, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative pl-10">
+              <motion.div key={i} className="relative pl-10">
                 <div className={`absolute w-6 h-6 rounded-full -left-[13px] top-0 border-4 border-gray-950 ${edu.status === 'Current' ? 'bg-indigo-500 animate-pulse' : 'bg-indigo-900'}`}></div>
-                <div className="p-8 bg-black/40 border border-gray-800 rounded-3xl shadow-xl hover:border-indigo-500/50 transition-colors">
-                  <span className={`text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider ${edu.status === 'Current' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-gray-800 text-gray-400'}`}>
-                    {edu.status}
-                  </span>
+                <div className="p-8 bg-black/40 border border-gray-800 rounded-3xl shadow-xl hover:border-indigo-500 transition-colors">
                   <h3 className="text-2xl font-bold text-indigo-400 mt-4">{edu.degree}</h3>
                   <p className="text-gray-300 font-medium mt-1">{edu.school}</p>
-                  <p className="text-sm text-gray-500 mt-1">{edu.date} | {edu.location}</p>
+                  <p className="text-sm text-gray-500 mt-1">{edu.date}</p>
                   {edu.grade && <p className="mt-4 text-indigo-300 font-bold text-lg">{edu.grade}</p>}
                 </div>
               </motion.div>
@@ -236,25 +228,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS SECTION */}
+      {/* SKILLS */}
       <section id="skills" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Technical Proficiency</h2>
+        <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white text-center">Technical Proficiency</h2>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
             {skills.map((skill, i) => (
               <div key={i} className="space-y-2">
-                <div className="flex justify-between text-sm font-medium">
-                  <span>{skill.name}</span>
-                  <span className="text-indigo-400">{skill.level}%</span>
-                </div>
+                <div className="flex justify-between text-sm font-medium"><span>{skill.name}</span><span className="text-indigo-400">{skill.level}%</span></div>
                 <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: i * 0.1 }}
-                    className="h-full bg-gradient-to-r from-indigo-600 to-purple-500"
-                  />
+                  <motion.div initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} transition={{ duration: 1 }} className="h-full bg-gradient-to-r from-indigo-600 to-purple-500"/>
                 </div>
               </div>
             ))}
@@ -262,19 +245,7 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-6">
             <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
               <h4 className="text-indigo-400 font-bold mb-3">Programming</h4>
-              <p className="text-sm text-gray-400 leading-relaxed">Python, SQL, JavaScript, HTML, CSS (Tailwind)</p>
-            </div>
-            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
-              <h4 className="text-indigo-400 font-bold mb-3">AI / ML</h4>
-              <p className="text-sm text-gray-400 leading-relaxed">ML, Deep Learning (LSTM), NLP, Model Evaluation</p>
-            </div>
-            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
-              <h4 className="text-indigo-400 font-bold mb-3">Tools</h4>
-              <p className="text-sm text-gray-400 leading-relaxed">Pandas, NumPy, Matplotlib, Flask, SQLite, Git</p>
-            </div>
-            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
-              <h4 className="text-indigo-400 font-bold mb-3">Soft Skills</h4>
-              <p className="text-sm text-gray-400 leading-relaxed">Problem-Solving, Communication, Adaptability</p>
+              <p className="text-sm text-gray-400 leading-relaxed">Python, SQL, JavaScript</p>
             </div>
           </div>
         </div>
@@ -283,11 +254,10 @@ export default function Home() {
       {/* EXPERIENCE */}
       <section id="experience" className="bg-gray-900/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 text-white">Experience</h2>
+          <h2 className="text-3xl font-bold mb-12 text-white text-center">Experience</h2>
           <div className="space-y-12">
             {experience.map((exp, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative border-l-2 border-indigo-500 pl-8">
-                <div className="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9px] top-1"></div>
+              <motion.div key={i} className="relative border-l-2 border-indigo-500 pl-8">
                 <h3 className="text-2xl font-bold text-indigo-400">{exp.role}</h3>
                 <p className="text-gray-300 font-medium">{exp.company}</p>
                 <p className="text-sm text-gray-500 mb-4">{exp.date}</p>
@@ -302,17 +272,60 @@ export default function Home() {
 
       {/* PROJECTS */}
       <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 text-white">Featured Projects</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="text-3xl font-bold mb-12 text-white text-center">Featured Projects</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
           {projects.map((proj, i) => (
-            <motion.div key={i} whileHover={{ y: -10, borderColor: "#6366f1" }} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group">
+            <motion.div key={i} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer hover:border-indigo-500 transition-all group">
               <h4 className="text-2xl font-bold text-white group-hover:text-indigo-400">{proj.title}</h4>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {proj.tech.map(t => <span key={t} className="text-[10px] uppercase tracking-widest bg-indigo-500/10 px-2 py-1 rounded text-indigo-300 font-bold border border-indigo-500/20">{t}</span>)}
-              </div>
               <p className="mt-6 text-gray-500 text-sm italic">Details & GitHub →</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* NEW CONTACT SECTION */}
+      <section id="contact" className="bg-gray-900/40 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Let's Connect</h2>
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Links */}
+            <div className="space-y-8">
+              <p className="text-gray-400 text-lg">
+                I'm always open to discussing new opportunities, data science projects, or creative ideas.
+              </p>
+              <div className="flex flex-col space-y-4">
+                <a href="mailto:rakesh28.dev@gmail.com" className="flex items-center gap-4 text-xl hover:text-indigo-400 transition">
+                  <span className="p-3 bg-indigo-500/10 rounded-full text-indigo-500">📧</span> rakesh28.dev@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="flex items-center gap-4 text-xl hover:text-indigo-400 transition">
+                  <span className="p-3 bg-indigo-500/10 rounded-full text-indigo-500">🔗</span> LinkedIn Profile
+                </a>
+                <a href="https://github.com/Rakesh-developer28" target="_blank" className="flex items-center gap-4 text-xl hover:text-indigo-400 transition">
+                  <span className="p-3 bg-indigo-500/10 rounded-full text-indigo-500">📁</span> GitHub Account
+                </a>
+              </div>
+            </div>
+
+            {/* Question Box */}
+            <div className="bg-black/40 border border-gray-800 p-8 rounded-3xl">
+              <h3 className="text-2xl font-bold mb-6 text-indigo-400">Drop a Question</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <input type="text" placeholder="Your Name" required className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition" />
+                </div>
+                <div>
+                  <input type="email" placeholder="Your Email" required className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition" />
+                </div>
+                <div>
+                  <textarea placeholder="Your Question or Message" rows="4" required className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition"></textarea>
+                </div>
+                <button type="submit" className="w-full py-3 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg">
+                  Send Message
+                </button>
+                {formStatus && <p className="text-center text-indigo-400 mt-2 font-medium">{formStatus}</p>}
+              </form>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -322,8 +335,7 @@ export default function Home() {
       </AnimatePresence>
 
       <footer className="py-12 text-center text-gray-600 text-sm border-t border-gray-900">
-        <p>📧 rakesh28.dev@gmail.com</p>
-        <p className="mt-2 font-medium">© 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology</p>
+        <p className="font-medium">© 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology</p>
       </footer>
     </div>
   );
