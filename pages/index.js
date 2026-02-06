@@ -8,11 +8,12 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="font-bold text-xl tracking-tighter uppercase">Rakesh G</h1>
-        <div className="hidden md:flex gap-8 text-sm font-medium">
+        <h1 className="font-bold text-xl tracking-tighter uppercase">RAKESH G</h1>
+        <div className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
           <a href="#about" className="hover:text-indigo-400 transition">About</a>
           <a href="#experience" className="hover:text-indigo-400 transition">Experience</a>
           <a href="#projects" className="hover:text-indigo-400 transition">Projects</a>
+          <a href="#education" className="hover:text-indigo-400 transition">Education</a>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl">
           {isOpen ? "✕" : "☰"}
@@ -24,12 +25,13 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-gray-900 border-b border-gray-800 overflow-hidden"
+            className="md:hidden bg-gray-950 border-b border-gray-800 overflow-hidden"
           >
-            <div className="flex flex-col p-6 gap-4 text-center">
+            <div className="flex flex-col p-6 gap-4 text-center text-gray-300">
               <a href="#about" onClick={() => setIsOpen(false)}>About</a>
               <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
               <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
+              <a href="#education" onClick={() => setIsOpen(false)}>Education</a>
             </div>
           </motion.div>
         )}
@@ -74,13 +76,13 @@ export default function Home() {
     {
       title: "Stock Market Prediction (LSTM)",
       tech: ["Python", "LSTM", "Deep Learning"],
-      desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing, feature engineering, and model tuning to improve prediction accuracy. Created interactive visualizations to showcase trends, model performance, and future price forecasts.",
+      desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing, feature engineering, and model tuning.",
       link: "https://github.com/Rakesh-developer28/stock_prediction"
     },
     {
       title: "Fake Product Review Detection",
       tech: ["NLP", "Python", "ML"],
-      desc: "Developed a machine learning model to classify product reviews as real or fake using review text, sentiment, rating, and verification status. Applied NLP techniques for text preprocessing and feature extraction."
+      desc: "Developed a machine learning model to classify product reviews as real or fake using NLP techniques for text preprocessing and feature extraction."
     },
     {
       title: "Menu vs Delivery NLP Analysis",
@@ -93,29 +95,20 @@ export default function Home() {
   const education = [
     {
       degree: "Master of Science in Data Science",
-      school: "Periyar Maniammai Institute of Science & Technology", // Updated
+      school: "Periyar Maniammai Institute of Science & Technology",
       date: "07/2025 – Present",
-      location: "Thanjavur, Tamil Nadu"
+      location: "Thanjavur, Tamil Nadu",
+      status: "Current"
     },
     {
       degree: "Bachelor of Science in Data Science",
-      school: "Periyar Maniammai Institute of Science & Technology", // Updated
+      school: "Periyar Maniammai Institute of Science & Technology",
       date: "08/2022 – 05/2025",
       location: "Thanjavur, Tamil Nadu",
-      grade: "CGPA: 7.51 / 10.0"
+      grade: "CGPA: 7.51 / 10.0",
+      status: "Completed"
     }
   ];
-
-  const volunteering = {
-    role: "Department Ambassador / Class Representative", // Combined roles
-    organization: "Periyar Maniammai Institute of Science & Technology", // Updated
-    date: "2024 – Present",
-    points: [
-      "Organized workshops, seminars, and tech events to enhance student skills.",
-      "Collaborated with the university tech team to improve software systems.",
-      "Promoted department growth through strategic planning and technical support."
-    ]
-  };
 
   const experience = [
     {
@@ -123,10 +116,9 @@ export default function Home() {
       company: "Tech Vaseegrah",
       date: "07/2024 – 08/2024",
       points: [
-        "Analyzed and visualized business data to support strategic decisions using Python, Excel, and SQL.",
-        "Built a real-world billing and dashboard web application using Flask, improving workflow efficiency.",
-        "Integrated user authentication, data visualization, and billing modules with database connectivity.",
-        "Created interactive dashboards and reports for internal use, enhancing decision-making speed."
+        "Analyzed and visualized business data using Python, Excel, and SQL.",
+        "Built a real-world billing and dashboard web application using Flask.",
+        "Created interactive dashboards and reports to enhance decision-making speed."
       ]
     },
     {
@@ -151,26 +143,27 @@ export default function Home() {
           <h1 className="text-6xl md:text-8xl font-extrabold bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-500 bg-clip-text text-transparent leading-tight">
             AI • ML • Data Science
           </h1>
-          <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Turning complex datasets into intelligent systems and actionable insights.
+          <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed italic">
+            "Transforming complex data into intelligent solutions."
           </p>
           <p className="mt-4 text-gray-300 font-medium tracking-wide">
-            RAKESH G • Data Science Student
+            RAKESH G • M.Sc. Data Science Student
           </p>
           <div className="mt-10 flex justify-center gap-6 flex-wrap">
-            <a href="#projects" className="px-8 py-3 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg">View Projects</a>
-            <a href="resume.pdf" download className="px-8 py-3 border border-gray-700 rounded-xl font-bold hover:border-indigo-500 transition">Download Resume</a>
+            <a href="#projects" className="px-8 py-3 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">View Projects</a>
+            <a href="resume.pdf" download className="px-8 py-3 border border-gray-700 rounded-xl font-bold hover:border-indigo-500 transition hover:bg-gray-900">Download Resume</a>
           </div>
         </motion.div>
       </section>
 
-      {/* SUMMARY */}
+      {/* UPDATED SUMMARY */}
       <section id="about" className="max-w-7xl mx-auto px-6 py-24">
         <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4">Professional Summary</h2>
         <p className="text-gray-400 text-lg leading-relaxed max-w-5xl">
-          Skilled and detail-oriented fresher with experience in software development and data analytics. 
-          Successfully delivered real-world projects by developing solutions and analyzing complex datasets to create actionable insights. 
-          Adept at aligning technical expertise with business needs and eager to contribute innovative solutions in a dynamic organization.
+          Aspiring Data Scientist and current M.Sc. candidate at <span className="text-indigo-400 font-semibold">Periyar Maniammai Institute of Science & Technology</span>. 
+          I specialize in building intelligent systems through <span className="text-indigo-400">Deep Learning (LSTM)</span> and <span className="text-indigo-400">NLP</span>, with a proven track record of delivering 
+          actionable insights during my internship at <span className="text-indigo-400">Tech Vaseegrah</span>. With a strong foundation in <span className="text-indigo-400">Python</span> 
+          and <span className="text-indigo-400">SQL</span>, I am dedicated to aligning technical innovation with real-world business needs.
         </p>
       </section>
 
@@ -194,54 +187,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJECTS SECTION */}
+      {/* PROJECTS */}
       <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
         <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj, i) => (
-            <motion.div 
-              key={i} 
-              whileHover={{ y: -10, borderColor: "#6366f1" }} 
-              onClick={() => setSelectedProject(proj)}
-              className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group"
-            >
+            <motion.div key={i} whileHover={{ y: -10, borderColor: "#6366f1" }} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group">
               <h4 className="text-2xl font-bold text-white group-hover:text-indigo-400">{proj.title}</h4>
               <div className="flex flex-wrap gap-2 mt-4">
                 {proj.tech.map(t => <span key={t} className="text-[10px] uppercase tracking-widest bg-indigo-500/10 px-2 py-1 rounded text-indigo-300 font-bold border border-indigo-500/20">{t}</span>)}
               </div>
-              <p className="mt-6 text-gray-500 text-sm italic">Click to read more details →</p>
+              <p className="mt-6 text-gray-500 text-sm italic">Details & GitHub →</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* EDUCATION */}
-      <section className="bg-gray-900/40 py-24">
+      {/* EDUCATION TIMELINE */}
+      <section id="education" className="bg-gray-900/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4">Education</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4">Education Journey</h2>
+          <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
             {education.map((edu, i) => (
-              <div key={i} className="p-8 bg-black/40 border border-gray-800 rounded-3xl">
-                <h3 className="text-xl font-bold text-indigo-400">{edu.degree}</h3>
-                <p className="text-gray-300 mt-2">{edu.school}</p>
-                <p className="text-sm text-gray-500">{edu.date} | {edu.location}</p>
-                {edu.grade && <p className="mt-4 text-indigo-300 font-bold">{edu.grade}</p>}
-              </div>
+              <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative pl-10">
+                <div className={`absolute w-6 h-6 rounded-full -left-[13px] top-0 border-4 border-gray-950 ${edu.status === 'Current' ? 'bg-indigo-500 animate-pulse' : 'bg-indigo-900'}`}></div>
+                <div className="p-8 bg-black/40 border border-gray-800 rounded-3xl shadow-xl hover:border-indigo-500/50 transition-colors">
+                  <span className={`text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider ${edu.status === 'Current' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-gray-800 text-gray-400'}`}>
+                    {edu.status}
+                  </span>
+                  <h3 className="text-2xl font-bold text-indigo-400 mt-4">{edu.degree}</h3>
+                  <p className="text-gray-300 font-medium mt-1">{edu.school}</p>
+                  <p className="text-sm text-gray-500 mt-1">{edu.date} | {edu.location}</p>
+                  {edu.grade && <p className="mt-4 text-indigo-300 font-bold text-lg">{edu.grade}</p>}
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* MODAL OVERLAY */}
+      {/* MODAL */}
       <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-        )}
+        {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
       </AnimatePresence>
 
       <footer className="py-12 text-center text-gray-600 text-sm border-t border-gray-900">
-        <p>Email: rakesh28.dev@gmail.com | Phone: +91 9342717472</p>
-        <p className="mt-2 font-medium">© 2026 RAKESH G | Data Science Student</p>
+        <p>📧 rakesh28.dev@gmail.com | 📞 +91 9342717472</p>
+        <p className="mt-2 font-medium">© 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology</p>
       </footer>
     </div>
   );
