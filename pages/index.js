@@ -11,10 +11,10 @@ const Navbar = () => {
         <h1 className="font-bold text-xl tracking-tighter uppercase">RAKESH G</h1>
         <div className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
           <a href="#about" className="hover:text-indigo-400 transition">About</a>
+          <a href="#education" className="hover:text-indigo-400 transition">Education</a>
           <a href="#skills" className="hover:text-indigo-400 transition">Skills</a>
           <a href="#experience" className="hover:text-indigo-400 transition">Experience</a>
           <a href="#projects" className="hover:text-indigo-400 transition">Projects</a>
-          <a href="#education" className="hover:text-indigo-400 transition">Education</a>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl">
           {isOpen ? "✕" : "☰"}
@@ -30,10 +30,10 @@ const Navbar = () => {
           >
             <div className="flex flex-col p-6 gap-4 text-center text-gray-300">
               <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+              <a href="#education" onClick={() => setIsOpen(false)}>Education</a>
               <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
               <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
               <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
-              <a href="#education" onClick={() => setIsOpen(false)}>Education</a>
             </div>
           </motion.div>
         )}
@@ -103,13 +103,13 @@ export default function Home() {
     {
        title: "Neural Pilot – Hill Climb AI",
        tech: ["Python", "TensorFlow", "Deep Reinforcement Learning"],
-       desc: "Developed a DRL agent for a physics-based control problem.",
+       desc: "Developed a DRL agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk.",
        link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI"
     },
     {
        title: "Finance Tracker",
        tech: ["Python", "Flask", "SQLite", "Chart.js"],
-       desc: "Personal finance tracker mini-project.",
+       desc: "Personal finance tracker mini-project using Flask, SQLite, and Chart.js.",
        link: "https://github.com/Rakesh-developer28/finance_tracker"
     }
   ];
@@ -189,8 +189,31 @@ export default function Home() {
         </p>
       </section>
 
-      {/* SKILLS SECTION WITH VISUALIZATION */}
-      <section id="skills" className="bg-gray-900/40 py-24">
+      {/* EDUCATION JOURNEY TIMELINE (Moved after Summary) */}
+      <section id="education" className="bg-gray-900/40 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Education Journey</h2>
+          <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
+            {education.map((edu, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative pl-10">
+                <div className={`absolute w-6 h-6 rounded-full -left-[13px] top-0 border-4 border-gray-950 ${edu.status === 'Current' ? 'bg-indigo-500 animate-pulse' : 'bg-indigo-900'}`}></div>
+                <div className="p-8 bg-black/40 border border-gray-800 rounded-3xl shadow-xl hover:border-indigo-500/50 transition-colors">
+                  <span className={`text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider ${edu.status === 'Current' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-gray-800 text-gray-400'}`}>
+                    {edu.status}
+                  </span>
+                  <h3 className="text-2xl font-bold text-indigo-400 mt-4">{edu.degree}</h3>
+                  <p className="text-gray-300 font-medium mt-1">{edu.school}</p>
+                  <p className="text-sm text-gray-500 mt-1">{edu.date} | {edu.location}</p>
+                  {edu.grade && <p className="mt-4 text-indigo-300 font-bold text-lg">{edu.grade}</p>}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SKILLS SECTION */}
+      <section id="skills" className="max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Technical Proficiency</h2>
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -238,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* EXPERIENCE */}
-      <section id="experience" className="max-w-7xl mx-auto px-6 py-24">
+      <section id="experience" className="bg-gray-900/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-white">Experience</h2>
           <div className="space-y-12">
@@ -258,43 +281,18 @@ export default function Home() {
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="bg-gray-900/40 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 text-white">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((proj, i) => (
-              <motion.div key={i} whileHover={{ y: -10, borderColor: "#6366f1" }} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-950/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group">
-                <h4 className="text-2xl font-bold text-white group-hover:text-indigo-400">{proj.title}</h4>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {proj.tech.map(t => <span key={t} className="text-[10px] uppercase tracking-widest bg-indigo-500/10 px-2 py-1 rounded text-indigo-300 font-bold border border-indigo-500/20">{t}</span>)}
-                </div>
-                <p className="mt-6 text-gray-500 text-sm italic">Details & GitHub →</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* EDUCATION JOURNEY TIMELINE */}
-      <section id="education" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Education Journey</h2>
-          <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
-            {education.map((edu, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative pl-10">
-                <div className={`absolute w-6 h-6 rounded-full -left-[13px] top-0 border-4 border-gray-950 ${edu.status === 'Current' ? 'bg-indigo-500 animate-pulse' : 'bg-indigo-900'}`}></div>
-                <div className="p-8 bg-black/40 border border-gray-800 rounded-3xl shadow-xl hover:border-indigo-500/50 transition-colors">
-                  <span className={`text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider ${edu.status === 'Current' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-gray-800 text-gray-400'}`}>
-                    {edu.status}
-                  </span>
-                  <h3 className="text-2xl font-bold text-indigo-400 mt-4">{edu.degree}</h3>
-                  <p className="text-gray-300 font-medium mt-1">{edu.school}</p>
-                  <p className="text-sm text-gray-500 mt-1">{edu.date} | {edu.location}</p>
-                  {edu.grade && <p className="mt-4 text-indigo-300 font-bold text-lg">{edu.grade}</p>}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
+        <h2 className="text-3xl font-bold mb-12 text-white">Featured Projects</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((proj, i) => (
+            <motion.div key={i} whileHover={{ y: -10, borderColor: "#6366f1" }} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group">
+              <h4 className="text-2xl font-bold text-white group-hover:text-indigo-400">{proj.title}</h4>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {proj.tech.map(t => <span key={t} className="text-[10px] uppercase tracking-widest bg-indigo-500/10 px-2 py-1 rounded text-indigo-300 font-bold border border-indigo-500/20">{t}</span>)}
+              </div>
+              <p className="mt-6 text-gray-500 text-sm italic">Details & GitHub →</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -304,7 +302,7 @@ export default function Home() {
       </AnimatePresence>
 
       <footer className="py-12 text-center text-gray-600 text-sm border-t border-gray-900">
-        <p>📧 rakesh28.dev@gmail.com | 📞 +91 9342717472</p>
+        <p>📧 rakesh28.dev@gmail.com</p>
         <p className="mt-2 font-medium">© 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology</p>
       </footer>
     </div>
