@@ -147,7 +147,16 @@ export default function Home() {
   ];
 
   const volunteering = [
-    { role: "Class Representative & Department Ambassador", org: "PMIST", date: "09/2024 – Present", points: ["Organized workshops, seminars, and tech events.", "Collaborated with university tech team to improve software systems.", "Promoted department growth through strategic planning."] }
+    { 
+      role: "Class Representative", 
+      org: "Periyar Maniammai Institute of Science & Technology", 
+      date: "07/2025 – Present", 
+      points: [
+        "Organized workshops, seminars, and technical events to enhance student skills.", 
+        "Collaborated with the university technical team to improve internal software systems.", 
+        "Promoted department growth through strategic planning and technical coordination."
+      ] 
+    }
   ];
 
   return (
