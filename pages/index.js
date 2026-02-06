@@ -16,7 +16,7 @@ const Navbar = () => {
           <a href="#experience" className="hover:text-indigo-400 transition">Experience</a>
           <a href="#projects" className="hover:text-indigo-400 transition">Projects</a>
         </div>
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl">
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl text-white">
           {isOpen ? "✕" : "☰"}
         </button>
       </div>
@@ -86,30 +86,24 @@ export default function Home() {
     {
       title: "Stock Market Prediction (LSTM)",
       tech: ["Python", "LSTM", "Deep Learning"],
-      desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing, feature engineering, and model tuning.",
+      desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing, feature engineering, and model tuning to improve prediction accuracy.",
       link: "https://github.com/Rakesh-developer28/stock_prediction"
     },
     {
       title: "Fake Product Review Detection",
       tech: ["NLP", "Python", "ML"],
-      desc: "Developed a machine learning model to classify product reviews as real or fake using NLP techniques for text preprocessing and feature extraction."
+      desc: "Developed a machine learning model to classify product reviews as real or fake using NLP techniques for text preprocessing and feature extraction. Trained and evaluated models to improve detection accuracy."
     },
     {
-      title: "Menu vs Delivery NLP Analysis",
-      tech: ["Python", "NLP", "Data Analytics"],
-      desc: "NLP analysis of food app reviews to compare menu quality vs delivery impact.",
-      link: "https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis"
-    },
-    {
-       title: "Neural Pilot – Hill Climb AI",
-       tech: ["Python", "TensorFlow", "Deep Reinforcement Learning"],
-       desc: "Developed a DRL agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk.",
-       link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI"
+      title: "Neural Pilot – Hill Climb AI",
+      tech: ["Python", "TensorFlow", "Deep Reinforcement Learning"],
+      desc: "Developed a DRL agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk.",
+      link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI"
     },
     {
        title: "Finance Tracker",
        tech: ["Python", "Flask", "SQLite", "Chart.js"],
-       desc: "Personal finance tracker mini-project using Flask, SQLite, and Chart.js.",
+       desc: "Personal finance tracker mini-project built using Flask, SQLite, and Chart.js.",
        link: "https://github.com/Rakesh-developer28/finance_tracker"
     }
   ];
@@ -173,23 +167,53 @@ export default function Home() {
           </p>
           <div className="mt-10 flex justify-center gap-6 flex-wrap">
             <a href="#projects" className="px-8 py-3 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">View Projects</a>
-            <a href="resume.pdf" download className="px-8 py-3 border border-gray-700 rounded-xl font-bold hover:border-indigo-500 transition hover:bg-gray-900">Download Resume</a>
+            <a href="resume.pdf" download className="px-8 py-3 border border-gray-700 rounded-xl font-bold hover:border-indigo-500 transition hover:bg-gray-900 text-white">Download Resume</a>
           </div>
         </motion.div>
       </section>
 
-      {/* SUMMARY */}
+      {/* EXPANDED SUMMARY */}
       <section id="about" className="max-w-7xl mx-auto px-6 py-24">
         <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4 text-white">Professional Summary</h2>
-        <p className="text-gray-400 text-lg leading-relaxed max-w-5xl">
-          Aspiring Data Scientist and current M.Sc. candidate at <span className="text-indigo-400 font-semibold">Periyar Maniammai Institute of Science & Technology</span>. 
-          I specialize in building intelligent systems through <span className="text-indigo-400">Deep Learning (LSTM)</span> and <span className="text-indigo-400">NLP</span>, with a proven track record of delivering 
-          actionable insights during my internship at <span className="text-indigo-400">Tech Vaseegrah</span>. With a strong foundation in <span className="text-indigo-400">Python</span> 
-          and <span className="text-indigo-400">SQL</span>, I am dedicated to aligning technical innovation with real-world business needs.
-        </p>
+        <div className="grid lg:grid-cols-3 gap-12">
+          <div className="lg:col-span-2">
+            <p className="text-gray-400 text-lg leading-relaxed mb-6">
+              I am a results-driven <span className="text-indigo-400 font-semibold">Data Science professional</span> currently pursuing my M.Sc. at <span className="text-indigo-400">Periyar Maniammai Institute of Science & Technology</span>. 
+              My expertise lies at the intersection of <span className="text-indigo-400 font-semibold">Software Engineering</span> and <span className="text-indigo-400 font-semibold">Advanced Analytics</span>, where I transform complex, unstructured datasets into 
+              actionable intelligence.
+            </p>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              With hands-on experience in building <span className="text-indigo-400 font-semibold">Deep Learning (LSTM)</span> architectures for stock forecasting and <span className="text-indigo-400 font-semibold">NLP models</span> for fraud detection, 
+              I have demonstrated the ability to align technical innovation with business objectives. My background includes a successful tenure as a 
+              <span className="text-indigo-400 font-semibold">Data Analyst Intern at Tech Vaseegrah</span>, where I developed full-stack billing solutions and interactive dashboards.
+            </p>
+          </div>
+          
+          <div className="bg-indigo-500/5 border border-indigo-500/20 p-8 rounded-3xl">
+            <h4 className="text-white font-bold mb-4">Core Focus Areas</h4>
+            <ul className="space-y-3 text-sm text-gray-400">
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                Predictive Modeling (LSTM & ML)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                Natural Language Processing (NLP)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                Full-Stack Data Web Apps (Flask)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                Time-Series & Sentiment Analysis
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      {/* EDUCATION JOURNEY TIMELINE (Moved after Summary) */}
+      {/* EDUCATION JOURNEY TIMELINE */}
       <section id="education" className="bg-gray-900/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Education Journey</h2>
@@ -214,47 +238,43 @@ export default function Home() {
 
       {/* SKILLS SECTION */}
       <section id="skills" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Technical Proficiency</h2>
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Skills Chart */}
-            <div className="space-y-6">
-              {skills.map((skill, i) => (
-                <div key={i} className="space-y-2">
-                  <div className="flex justify-between text-sm font-medium">
-                    <span>{skill.name}</span>
-                    <span className="text-indigo-400">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: i * 0.1 }}
-                      className="h-full bg-gradient-to-r from-indigo-600 to-purple-500"
-                    />
-                  </div>
+        <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Technical Proficiency</h2>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            {skills.map((skill, i) => (
+              <div key={i} className="space-y-2">
+                <div className="flex justify-between text-sm font-medium">
+                  <span>{skill.name}</span>
+                  <span className="text-indigo-400">{skill.level}%</span>
                 </div>
-              ))}
+                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: i * 0.1 }}
+                    className="h-full bg-gradient-to-r from-indigo-600 to-purple-500"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+              <h4 className="text-indigo-400 font-bold mb-3">Programming</h4>
+              <p className="text-sm text-gray-400 leading-relaxed">Python, SQL, JavaScript, HTML, CSS (Tailwind)</p>
             </div>
-            {/* Skills Categories */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
-                <h4 className="text-indigo-400 font-bold mb-3">Programming</h4>
-                <p className="text-sm text-gray-400 leading-relaxed">Python, SQL, JavaScript, HTML, CSS (Tailwind)</p>
-              </div>
-              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
-                <h4 className="text-indigo-400 font-bold mb-3">AI / ML</h4>
-                <p className="text-sm text-gray-400 leading-relaxed">ML, Deep Learning (LSTM), NLP, Model Evaluation</p>
-              </div>
-              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
-                <h4 className="text-indigo-400 font-bold mb-3">Tools</h4>
-                <p className="text-sm text-gray-400 leading-relaxed">Pandas, NumPy, Matplotlib, Flask, SQLite, Git</p>
-              </div>
-              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
-                <h4 className="text-indigo-400 font-bold mb-3">Soft Skills</h4>
-                <p className="text-sm text-gray-400 leading-relaxed">Problem-Solving, Communication, Adaptability</p>
-              </div>
+            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+              <h4 className="text-indigo-400 font-bold mb-3">AI / ML</h4>
+              <p className="text-sm text-gray-400 leading-relaxed">ML, Deep Learning (LSTM), NLP, Model Evaluation</p>
+            </div>
+            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+              <h4 className="text-indigo-400 font-bold mb-3">Tools</h4>
+              <p className="text-sm text-gray-400 leading-relaxed">Pandas, NumPy, Matplotlib, Flask, SQLite, Git</p>
+            </div>
+            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+              <h4 className="text-indigo-400 font-bold mb-3">Soft Skills</h4>
+              <p className="text-sm text-gray-400 leading-relaxed">Problem-Solving, Communication, Adaptability</p>
             </div>
           </div>
         </div>
