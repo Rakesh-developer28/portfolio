@@ -11,6 +11,7 @@ const Navbar = () => {
         <h1 className="font-bold text-xl tracking-tighter uppercase">RAKESH G</h1>
         <div className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
           <a href="#about" className="hover:text-indigo-400 transition">About</a>
+          <a href="#skills" className="hover:text-indigo-400 transition">Skills</a>
           <a href="#experience" className="hover:text-indigo-400 transition">Experience</a>
           <a href="#projects" className="hover:text-indigo-400 transition">Projects</a>
           <a href="#education" className="hover:text-indigo-400 transition">Education</a>
@@ -29,6 +30,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col p-6 gap-4 text-center text-gray-300">
               <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+              <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
               <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
               <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
               <a href="#education" onClick={() => setIsOpen(false)}>Education</a>
@@ -71,6 +73,14 @@ const ProjectModal = ({ project, onClose }) => (
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const skills = [
+    { name: "Python", level: 90 },
+    { name: "SQL", level: 85 },
+    { name: "Machine Learning", level: 80 },
+    { name: "Deep Learning (LSTM)", level: 75 },
+    { name: "Data Visualization", level: 85 },
+  ];
 
   const projects = [
     {
@@ -168,7 +178,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* REFINED SUMMARY */}
+      {/* SUMMARY */}
       <section id="about" className="max-w-7xl mx-auto px-6 py-24">
         <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4 text-white">Professional Summary</h2>
         <p className="text-gray-400 text-lg leading-relaxed max-w-5xl">
@@ -179,8 +189,56 @@ export default function Home() {
         </p>
       </section>
 
+      {/* SKILLS SECTION WITH VISUALIZATION */}
+      <section id="skills" className="bg-gray-900/40 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Technical Proficiency</h2>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Skills Chart */}
+            <div className="space-y-6">
+              {skills.map((skill, i) => (
+                <div key={i} className="space-y-2">
+                  <div className="flex justify-between text-sm font-medium">
+                    <span>{skill.name}</span>
+                    <span className="text-indigo-400">{skill.level}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: i * 0.1 }}
+                      className="h-full bg-gradient-to-r from-indigo-600 to-purple-500"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Skills Categories */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+                <h4 className="text-indigo-400 font-bold mb-3">Programming</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">Python, SQL, JavaScript, HTML, CSS (Tailwind)</p>
+              </div>
+              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+                <h4 className="text-indigo-400 font-bold mb-3">AI / ML</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">ML, Deep Learning (LSTM), NLP, Model Evaluation</p>
+              </div>
+              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+                <h4 className="text-indigo-400 font-bold mb-3">Tools</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">Pandas, NumPy, Matplotlib, Flask, SQLite, Git</p>
+              </div>
+              <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl">
+                <h4 className="text-indigo-400 font-bold mb-3">Soft Skills</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">Problem-Solving, Communication, Adaptability</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* EXPERIENCE */}
-      <section id="experience" className="bg-gray-900/40 py-24">
+      <section id="experience" className="max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-white">Experience</h2>
           <div className="space-y-12">
@@ -200,23 +258,25 @@ export default function Home() {
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 text-white">Featured Projects</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((proj, i) => (
-            <motion.div key={i} whileHover={{ y: -10, borderColor: "#6366f1" }} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group">
-              <h4 className="text-2xl font-bold text-white group-hover:text-indigo-400">{proj.title}</h4>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {proj.tech.map(t => <span key={t} className="text-[10px] uppercase tracking-widest bg-indigo-500/10 px-2 py-1 rounded text-indigo-300 font-bold border border-indigo-500/20">{t}</span>)}
-              </div>
-              <p className="mt-6 text-gray-500 text-sm italic">Details & GitHub →</p>
-            </motion.div>
-          ))}
+      <section id="projects" className="bg-gray-900/40 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12 text-white">Featured Projects</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((proj, i) => (
+              <motion.div key={i} whileHover={{ y: -10, borderColor: "#6366f1" }} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-950/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group">
+                <h4 className="text-2xl font-bold text-white group-hover:text-indigo-400">{proj.title}</h4>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {proj.tech.map(t => <span key={t} className="text-[10px] uppercase tracking-widest bg-indigo-500/10 px-2 py-1 rounded text-indigo-300 font-bold border border-indigo-500/20">{t}</span>)}
+                </div>
+                <p className="mt-6 text-gray-500 text-sm italic">Details & GitHub →</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* EDUCATION JOURNEY TIMELINE */}
-      <section id="education" className="bg-gray-900/40 py-24">
+      <section id="education" className="max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Education Journey</h2>
           <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
