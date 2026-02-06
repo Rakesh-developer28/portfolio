@@ -93,18 +93,29 @@ export default function Home() {
   const education = [
     {
       degree: "Master of Science in Data Science",
-      school: "Periyar Maniammai University",
+      school: "Periyar Maniammai Institute of Science & Technology", // Updated
       date: "07/2025 – Present",
       location: "Thanjavur, Tamil Nadu"
     },
     {
       degree: "Bachelor of Science in Data Science",
-      school: "Periyar Maniammai University",
+      school: "Periyar Maniammai Institute of Science & Technology", // Updated
       date: "08/2022 – 05/2025",
       location: "Thanjavur, Tamil Nadu",
       grade: "CGPA: 7.51 / 10.0"
     }
   ];
+
+  const volunteering = {
+    role: "Department Ambassador / Class Representative", // Combined roles
+    organization: "Periyar Maniammai Institute of Science & Technology", // Updated
+    date: "2024 – Present",
+    points: [
+      "Organized workshops, seminars, and tech events to enhance student skills.",
+      "Collaborated with the university tech team to improve software systems.",
+      "Promoted department growth through strategic planning and technical support."
+    ]
+  };
 
   const experience = [
     {
