@@ -89,6 +89,18 @@ export default function Home() {
       tech: ["Python", "NLP", "Data Analytics"],
       desc: "NLP analysis of food app reviews to compare menu quality vs delivery impact.",
       link: "https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis"
+    },
+    {
+       title: "Neural Pilot – Hill Climb AI",
+       tech: ["Python", "TensorFlow", "Deep Reinforcement Learning"],
+       desc: "Developed a DRL agent for a physics-based control problem.",
+       link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI"
+    },
+    {
+       title: "Finance Tracker",
+       tech: ["Python", "Flask", "SQLite", "Chart.js"],
+       desc: "Personal finance tracker mini-project.",
+       link: "https://github.com/Rakesh-developer28/finance_tracker"
     }
   ];
 
@@ -156,9 +168,9 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* UPDATED SUMMARY */}
+      {/* REFINED SUMMARY */}
       <section id="about" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4">Professional Summary</h2>
+        <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4 text-white">Professional Summary</h2>
         <p className="text-gray-400 text-lg leading-relaxed max-w-5xl">
           Aspiring Data Scientist and current M.Sc. candidate at <span className="text-indigo-400 font-semibold">Periyar Maniammai Institute of Science & Technology</span>. 
           I specialize in building intelligent systems through <span className="text-indigo-400">Deep Learning (LSTM)</span> and <span className="text-indigo-400">NLP</span>, with a proven track record of delivering 
@@ -170,7 +182,7 @@ export default function Home() {
       {/* EXPERIENCE */}
       <section id="experience" className="bg-gray-900/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12">Experience</h2>
+          <h2 className="text-3xl font-bold mb-12 text-white">Experience</h2>
           <div className="space-y-12">
             {experience.map((exp, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative border-l-2 border-indigo-500 pl-8">
@@ -189,7 +201,7 @@ export default function Home() {
 
       {/* PROJECTS */}
       <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
+        <h2 className="text-3xl font-bold mb-12 text-white">Featured Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj, i) => (
             <motion.div key={i} whileHover={{ y: -10, borderColor: "#6366f1" }} onClick={() => setSelectedProject(proj)} className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer transition-all duration-300 group">
@@ -203,10 +215,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* EDUCATION TIMELINE */}
+      {/* EDUCATION JOURNEY TIMELINE */}
       <section id="education" className="bg-gray-900/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4">Education Journey</h2>
+          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Education Journey</h2>
           <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
             {education.map((edu, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative pl-10">
