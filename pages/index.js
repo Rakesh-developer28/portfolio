@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- SEARCH-BAR STYLE NAVIGATION ---
+// --- PROFESSIONAL SEARCH-BAR NAVIGATION ---
 const Navbar = ({ setIsNavOpen }) => {
   return (
     <nav className="fixed top-0 w-full z-[100] px-6 py-6 flex justify-center">
@@ -43,130 +43,159 @@ export default function Home() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // --- ALL DATA RESTORED FROM HISTORY ---
+  // --- COMPREHENSIVE DATA RESTORATION ---
   const projects = [
-    { title: "Stock Market Prediction (LSTM)", tech: ["Python", "LSTM", "TensorFlow"], desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data.", link: "https://github.com/Rakesh-developer28/stock_prediction" },
-    { title: "Fake Product Review Detection", tech: ["NLP", "Python", "ML"], desc: "Developed a machine learning model to classify product reviews as real or fake using NLP." },
-    { title: "Neural Pilot – Hill Climb AI", tech: ["Python", "TensorFlow", "Deep RL"], desc: "Developed a Deep Reinforcement Learning agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk.", link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI" },
-    { title: "Menu vs Delivery NLP", tech: ["Python", "NLP", "Analytics"], desc: "Analyzed food app reviews to compare menu quality vs delivery impact via sentiment analysis." },
-    { title: "Finance Tracker", tech: ["Flask", "SQLite", "Chart.js"], desc: "Personal finance tracker built using Flask and SQLite with dynamic visualization.", link: "https://github.com/Rakesh-developer28/finance_tracker" }
+    { title: "Stock Market Prediction (LSTM)", tech: ["Python", "LSTM", "TensorFlow"], desc: "Designed and trained LSTM models for time series forecasting using historical market data.", link: "https://github.com/Rakesh-developer28/stock_prediction" },
+    { title: "Neural Pilot – Hill Climb AI", tech: ["Python", "Deep RL", "Pymunk"], desc: "Developed a DRL agent for a physics-based control problem using TensorFlow and Pygame.", link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI" },
+    { title: "Fake Product Review Detection", tech: ["NLP", "Python", "ML"], desc: "Built a classification model to identify fraudulent reviews using text preprocessing and sentiment analysis." },
+    { title: "Finance Tracker", tech: ["Flask", "SQLite", "Chart.js"], desc: "Full-stack application for real-time personal finance tracking and visualization.", link: "https://github.com/Rakesh-developer28/finance_tracker" }
   ];
 
   const education = [
-    { degree: "Master of Science in Data Science", school: "PMIST", date: "07/2025 – Present", status: "Current" },
-    { degree: "Bachelor of Science in Data Science", school: "PMIST", date: "08/2022 – 05/2025", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
+    { degree: "Master of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "07/2025 – Present", status: "Current" },
+    { degree: "Bachelor of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "08/2022 – 05/2025", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
   ];
 
   const experience = [
-    { role: "Data Analyst Intern", company: "Tech Vaseegrah", date: "07/2024 – 08/2024", points: ["Analyzed business data using Python and SQL.", "Built a billing and dashboard application using Flask."] },
-    { role: "AI & ML Trainee", company: "Rexroth Bosch Group", date: "Dec 2024 – Jan 2025", points: ["Industrial AI training using sensor datasets and predictive models."] }
+    { role: "Data Analyst Intern", company: "Tech Vaseegrah", date: "07/2024 – 08/2024", points: ["Analyzed and visualized business data using Python and SQL.", "Built a billing and dashboard web application using Flask."] },
+    { role: "AI & ML Trainee", company: "Rexroth Bosch Group", date: "Dec 2024 – Jan 2025", points: ["Applied Deep Learning to industrial manufacturing use cases.", "Worked with real-world sensor datasets for predictive modeling."] }
   ];
-
-  const leadership = { 
-    role: "Class Representative", 
-    org: "PMIST", 
-    date: "07/2025 – Present", 
-    points: ["Organized workshops and technical events.", "Collaborated with technical teams for software improvements."] 
-  };
 
   return (
     <>
       <Head>
         <title>Rakesh G | Data Science Portfolio</title>
-        <meta name="description" content="Rakesh G - Data Science Student Portfolio" />
+        <meta name="description" content="Professional Portfolio of Rakesh G - Data Science Student and Developer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-[#030712] text-slate-200 font-sans overflow-x-hidden">
+      <div className="min-h-screen bg-[#030712] text-slate-200 font-sans selection:bg-violet-500/30 overflow-x-hidden">
         
         <Navbar setIsNavOpen={setIsNavOpen} />
 
         {/* HERO SECTION */}
-        <section className="pt-56 pb-32 px-6 flex flex-col items-center text-center">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-10 text-xs font-mono text-violet-400 font-bold">
+        <section className="pt-56 pb-32 px-6 flex flex-col items-center text-center relative">
+          <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-violet-600/5 rounded-full blur-[120px] -z-10" />
+          
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-10 text-xs font-mono text-violet-400">
+            <span className="flex gap-1.5"><div className="w-2 h-2 rounded-full bg-red-500/50"></div><div className="w-2 h-2 rounded-full bg-yellow-500/50"></div><div className="w-2 h-2 rounded-full bg-green-500/50"></div></span>
             $ Hello, World!
           </motion.div>
+
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-7xl md:text-9xl font-extrabold mb-6 tracking-tighter text-white uppercase">
             Rakesh <span className="text-violet-500">G</span>
           </motion.h1>
-          <p className="text-xl text-slate-400 italic mb-12">"Transforming complex data into intelligent solutions."</p>
-          <div className="flex gap-4">
-            <a href="#projects" className="px-10 py-4 bg-white text-black font-bold rounded-full">View Projects ↗</a>
-            <a href="resume.pdf" download className="px-10 py-4 border border-white/10 rounded-full font-bold">Download CV</a>
+          
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="max-w-xl text-slate-400 leading-relaxed mb-12 text-lg italic">
+            "Transforming complex data into <span className="text-violet-400 font-bold">intelligent solutions</span>."
+          </motion.p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="#projects" className="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-violet-500 hover:text-white transition-all shadow-xl shadow-violet-500/10">View Projects ↗</a>
+            <a href="resume.pdf" download className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all text-white">Download CV</a>
           </div>
         </section>
 
-        {/* ABOUT SECTION */}
+        {/* SUMMARY / ABOUT */}
         <section id="about" className="max-w-5xl mx-auto px-6 py-24 border-t border-white/5">
-          <h2 className="text-3xl font-bold mb-8 border-l-4 border-violet-500 pl-4">About Me</h2>
-          <p className="text-gray-400 text-lg leading-relaxed">
-            I am a Data Science professional pursuing an M.Sc. at PMIST. I specialize in building intelligent systems through Deep Learning and NLP. My track record includes delivering real-world projects by analyzing complex datasets to create actionable insights.
+          <h2 className="text-3xl font-bold mb-8 border-l-4 border-violet-500 pl-4">Professional Summary</h2>
+          <p className="text-gray-400 text-lg leading-relaxed mb-6">
+            I am a skilled and detail-oriented <span className="text-white font-semibold">Data Science fresher</span> currently pursuing an M.Sc. at PMIST. I specialize in building intelligent systems through <span className="text-violet-400 font-bold">Deep Learning (LSTM)</span> and <span className="text-violet-400 font-bold">NLP</span>. My track record includes transforming complex datasets into actionable insights during my internship at Tech Vaseegrah.
           </p>
         </section>
 
-        {/* SKILLS GRID */}
+        {/* CORE COMPETENCY GRID */}
         <section id="skills" className="max-w-7xl mx-auto px-6 py-32 bg-[#050a18]/30">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-extrabold text-white">Core <span className="text-violet-500">Competency</span></h2>
+            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white">Core <span className="text-violet-500">Competency</span></h2>
           </div>
+
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 shadow-xl">
-              <h3 className="text-xl font-bold mb-8 flex items-center gap-4 underline decoration-violet-500/30 underline-offset-8"><span>💻</span> Programming</h3>
+            <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
+              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-4 underline decoration-violet-500/30 underline-offset-8"><span>💻</span> Programming & Scripting</h3>
               <div className="flex flex-wrap gap-3">
-                {['Python', 'SQL', 'JavaScript', 'HTML5', 'Tailwind CSS'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-slate-300 font-bold">{s}</span>)}
+                {['Python', 'SQL', 'JavaScript', 'HTML5', 'Tailwind'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
               </div>
             </div>
-            <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 shadow-xl">
-              <h3 className="text-xl font-bold mb-8 flex items-center gap-4 underline decoration-violet-500/30 underline-offset-8"><span>🤖</span> AI & ML</h3>
+            <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
+              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-4 underline decoration-violet-500/30 underline-offset-8"><span>🤖</span> AI & Machine Learning</h3>
               <div className="flex flex-wrap gap-3">
-                {['TensorFlow', 'Scikit-learn', 'LSTM', 'NLP', 'DRL', 'Deep Learning'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-slate-300 font-bold">{s}</span>)}
+                {['TensorFlow', 'Scikit-learn', 'LSTM', 'NLP', 'DRL', 'Deep Learning'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
+              </div>
+            </div>
+            <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
+              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-4 underline decoration-violet-500/30 underline-offset-8"><span>📊</span> Data & Analytics</h3>
+              <div className="flex flex-wrap gap-3">
+                {['Neo4j', 'SQLite', 'Pandas', 'NumPy', 'Power BI', 'Excel'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
+              </div>
+            </div>
+            <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
+              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-4 underline decoration-violet-500/30 underline-offset-8"><span>🛠️</span> Tools & Platforms</h3>
+              <div className="flex flex-wrap gap-3">
+                {['Flask', 'Next.js', 'Git', 'GitHub', 'Vercel', 'Postman'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
               </div>
             </div>
           </div>
         </section>
 
-        {/* EXPERIENCE & EDUCATION */}
-        <section id="education" className="max-w-5xl mx-auto px-6 py-24 border-t border-white/5">
-          <h2 className="text-3xl font-bold mb-12 border-l-4 border-violet-500 pl-4">Journey</h2>
-          <div className="space-y-12">
-            {education.map((edu, i) => (
-              <div key={i} className="p-8 rounded-[32px] bg-[#0b0f1a] border border-white/5 shadow-lg">
-                <span className="text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider bg-violet-500/20 text-violet-400">{edu.status}</span>
-                <h3 className="text-2xl font-bold text-violet-400 mt-4">{edu.degree}</h3>
-                <p className="text-slate-300">{edu.school} | {edu.date}</p>
-                {edu.grade && <p className="mt-4 text-violet-300 font-bold">{edu.grade}</p>}
-              </div>
-            ))}
+        {/* EXPERIENCE & EDUCATION JOURNEY */}
+        <section id="education" className="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
+          <h2 className="text-4xl font-bold mb-16 flex items-center gap-6 text-white text-center uppercase tracking-tighter">Academic & Professional <span className="text-violet-500 italic">Journey</span></h2>
+          <div className="grid lg:grid-cols-2 gap-16">
+            <div className="space-y-12 border-l border-white/10 pl-8">
+              <h3 className="text-xl font-bold text-violet-400 uppercase tracking-widest">Experience</h3>
+              {experience.map((exp, i) => (
+                <div key={i} className="relative group">
+                  <div className="absolute w-3 h-3 bg-violet-500 rounded-full -left-[40px] top-2 shadow-[0_0_10px_#8b5cf6]"></div>
+                  <h4 className="font-bold text-xl text-white">{exp.role}</h4>
+                  <p className="text-slate-400 font-medium mb-4 italic">{exp.company} | {exp.date}</p>
+                  <ul className="space-y-2 text-sm text-slate-500">{exp.points.map((p, j) => <li key={j}>• {p}</li>)}</ul>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-12 border-l border-white/10 pl-8">
+              <h3 className="text-xl font-bold text-violet-400 uppercase tracking-widest">Education</h3>
+              {education.map((edu, i) => (
+                <div key={i} className="relative">
+                  <div className="absolute w-3 h-3 bg-violet-500 rounded-full -left-[40px] top-2 shadow-[0_0_10px_#8b5cf6]"></div>
+                  <h4 className="font-bold text-xl text-white">{edu.degree}</h4>
+                  <p className="text-slate-400 font-medium italic">{edu.school}</p>
+                  <p className="text-xs text-slate-600 mb-2 uppercase font-bold tracking-widest">{edu.date}</p>
+                  {edu.grade && <p className="text-violet-300 font-bold text-lg">{edu.grade}</p>}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* PROJECTS SECTION */}
-        <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
-          <h2 className="text-5xl font-extrabold mb-16 text-white">Featured <span className="text-violet-500">Projects</span></h2>
+        <section id="projects" className="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
+          <h2 className="text-5xl font-extrabold mb-16 tracking-tighter text-white">Featured <span className="text-violet-500">Projects</span></h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((proj, i) => (
-              <div key={i} onClick={() => setSelectedProject(proj)} className="p-10 bg-[#0b0f1a] border border-white/5 rounded-[40px] cursor-pointer hover:border-violet-500/50 transition-all h-[440px] flex flex-col justify-between group shadow-2xl">
+              <motion.div key={i} onClick={() => setSelectedProject(proj)} whileHover={{ y: -10 }} className="p-10 bg-[#0b0f1a] border border-white/5 rounded-[40px] cursor-pointer hover:border-violet-500/50 transition-all h-[440px] flex flex-col justify-between shadow-2xl group text-white">
                 <div>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {proj.tech.map(t => <span key={t} className="text-[10px] font-bold px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">{t}</span>)}
                   </div>
-                  <h4 className="text-3xl font-bold text-white group-hover:text-violet-400 transition-colors mb-4 leading-tight">{proj.title}</h4>
-                  <p className="text-slate-500 text-sm italic">Click to view Case Study →</p>
+                  <h4 className="text-3xl font-bold mb-4 leading-tight group-hover:text-violet-400 transition-colors">{proj.title}</h4>
+                  <p className="text-slate-500 text-sm italic line-clamp-3">Click to explore the detailed case study and GitHub repository →</p>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-violet-500 self-end">↗</div>
-              </div>
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-violet-500 self-end hover:bg-violet-500 hover:text-white transition-all">↗</div>
+              </motion.div>
             ))}
           </div>
         </section>
 
         {/* LEADERSHIP */}
-        <section className="max-w-5xl mx-auto px-6 py-24">
-          <h2 className="text-4xl font-bold mb-16 flex items-center gap-6 text-white text-center">Leadership <div className="h-0.5 flex-1 bg-violet-500/20"></div></h2>
+        <section className="max-w-5xl mx-auto px-6 py-24 border-t border-white/5">
+          <h2 className="text-4xl font-bold mb-16 flex items-center gap-6 text-white uppercase tracking-tighter">Leadership</h2>
           <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 shadow-2xl text-white">
-            <h3 className="text-2xl font-bold text-violet-400 flex items-center gap-4"><span>📢</span> {leadership.role}</h3>
-            <p className="text-slate-400 italic mb-6">{leadership.org} | {leadership.date}</p>
-            <ul className="space-y-4 text-slate-500 text-sm font-medium">
-              {leadership.points.map((p, j) => <li key={j} className="flex gap-3"><span className="text-violet-500">▹</span> {p}</li>)}
+            <h3 className="text-2xl font-bold text-violet-400 tracking-tight flex items-center gap-4"><span>📢</span> Class Representative</h3>
+            <p className="text-slate-400 font-medium mb-6 italic">PMIST | 07/2025 – Present</p>
+            <ul className="space-y-4 text-slate-500 text-sm leading-relaxed font-medium">
+              <li className="flex gap-3"><span className="text-violet-500">▹</span> Organized workshops, seminars, and technical events.</li>
+              <li className="flex gap-3"><span className="text-violet-500">▹</span> Collaborated with the technical team for systems improvement.</li>
             </ul>
           </div>
         </section>
@@ -174,27 +203,30 @@ export default function Home() {
         {/* CONTACT SECTION */}
         <section id="contact" className="py-40 text-center relative border-t border-white/5">
           <h2 className="text-6xl md:text-8xl font-extrabold mb-12 tracking-tighter text-white">Get In <span className="text-violet-500">Touch</span></h2>
-          <div className="flex flex-wrap justify-center gap-8">
-            <a href="mailto:rakesh28.dev@gmail.com" className="bg-[#0b0f1a] p-8 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all text-white shadow-xl">rakesh28.dev@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="bg-white/5 px-10 py-8 rounded-[32px] border border-white/5 hover:text-violet-400 text-white font-bold">LinkedIn</a>
+          <div className="flex flex-wrap justify-center gap-8 px-6 text-white">
+            <a href="mailto:rakesh28.dev@gmail.com" className="bg-[#0b0f1a] p-8 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all flex items-center gap-4 text-white shadow-xl">
+              <span className="p-4 bg-violet-500/10 rounded-2xl text-violet-500 text-2xl">📧</span> rakesh28.dev@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="bg-white/5 px-10 py-8 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all font-bold text-lg text-white">LinkedIn</a>
+            <a href="https://github.com/Rakesh-developer28" target="_blank" className="bg-white/5 px-10 py-8 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all font-bold text-lg text-white">GitHub</a>
           </div>
         </section>
 
         <footer className="py-12 text-center text-slate-600 text-[10px] tracking-[0.5em] font-mono border-t border-gray-900 uppercase">
-          © 2026 RAKESH G | PMIST
+          © 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology
         </footer>
 
-        {/* PROJECT MODAL */}
+        {/* MODAL */}
         <AnimatePresence>
           {selectedProject && (
             <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-black/95 backdrop-blur-md" />
               <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-[#0b0f1a] border border-white/10 p-12 rounded-[48px] max-w-2xl w-full text-white shadow-2xl">
-                <h3 className="text-4xl font-bold text-violet-400 mb-6 uppercase tracking-tight">{selectedProject.title}</h3>
+                <h3 className="text-4xl font-bold text-violet-400 mb-6 tracking-tight uppercase">{selectedProject.title}</h3>
                 <p className="text-slate-400 leading-relaxed text-lg mb-10 italic">{selectedProject.desc}</p>
                 <div className="flex gap-4">
-                  {selectedProject.link && <a href={selectedProject.link} target="_blank" className="flex-1 py-5 bg-white text-black text-center font-bold rounded-2xl">View Code</a>}
-                  <button onClick={() => setSelectedProject(null)} className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl font-bold">Close</button>
+                  {selectedProject.link && <a href={selectedProject.link} target="_blank" className="flex-1 py-5 bg-white text-black text-center font-bold rounded-2xl hover:bg-violet-500 hover:text-white transition-all uppercase text-xs tracking-widest font-bold">View Code</a>}
+                  <button onClick={() => setSelectedProject(null)} className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all uppercase text-xs tracking-widest font-bold">Close</button>
                 </div>
               </motion.div>
             </div>
