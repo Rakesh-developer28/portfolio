@@ -9,37 +9,37 @@ export default function Portfolio() {
     { 
       title: "Stock Market Prediction (LSTM)", 
       tech: ["Python", "LSTM", "TensorFlow"], 
-      desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing, feature engineering, and model tuning.", 
+      desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing, feature engineering, and model tuning to improve prediction accuracy.", 
       link: "https://github.com/Rakesh-developer28/stock_prediction" 
     },
     { 
       title: "Fake Product Review Detection", 
       tech: ["NLP", "Python", "ML"], 
-      desc: "Developed a machine learning model to classify product reviews as real or fake using NLP techniques for text preprocessing and feature extraction." 
+      desc: "Developed a machine learning model to classify product reviews as real or fake using NLP techniques for text preprocessing and feature extraction. Built to improve consumer trust in e-commerce." 
     },
     { 
       title: "Neural Pilot – Hill Climb AI", 
       tech: ["Python", "TensorFlow", "Deep RL"], 
-      desc: "Built a Deep Reinforcement Learning agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk.", 
+      desc: "Built a Deep Reinforcement Learning agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk. Focused on reward shaping and policy optimization.", 
       link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI" 
     },
     { 
       title: "Menu vs Delivery NLP Analysis", 
       tech: ["Python", "NLP", "Analytics"], 
-      desc: "Analyzed food app reviews to compare menu quality vs delivery impact via sentiment analysis.", 
+      desc: "Analyzed food app reviews to compare menu quality vs delivery impact via sentiment analysis and keyword extraction to drive business insights.", 
       link: "https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis" 
     },
     { 
       title: "Finance Tracker", 
       tech: ["Flask", "SQLite", "Chart.js"], 
-      desc: "Full-stack personal finance tracker built using Flask and SQLite with dynamic data visualization.", 
+      desc: "Full-stack personal finance tracker built using Flask and SQLite with dynamic data visualization using Chart.js.", 
       link: "https://github.com/Rakesh-developer28/finance_tracker" 
     }
   ];
 
   const education = [
-    { degree: "Master of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "07/2025 – Present", status: "Current" },
-    { degree: "Bachelor of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "08/2022 – 05/2025", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
+    { degree: "Master of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "07/2025 – Present", location: "Thanjavur, India", status: "Current" },
+    { degree: "Bachelor of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "08/2022 – 05/2025", location: "Thanjavur, India", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
   ];
 
   const experience = [
@@ -49,7 +49,8 @@ export default function Portfolio() {
       date: "07/2024 – 08/2024", 
       points: [
         "Analyzed and visualized business data using Python, Excel, and SQL.",
-        "Built a real-world billing and dashboard web application using Flask."
+        "Built a real-world billing and dashboard web application using Flask.",
+        "Integrated user authentication and billing modules."
       ] 
     },
     { 
@@ -63,10 +64,21 @@ export default function Portfolio() {
     }
   ];
 
+  const volunteering = { 
+    role: "Class Representative", 
+    org: "Periyar Maniammai Institute of Science & Technology", 
+    date: "07/2025 – Present", 
+    points: [
+      "Organized workshops, seminars, and technical events to enhance student skills.", 
+      "Collaborated with the university technical team to improve internal software systems.", 
+      "Promoted department growth through strategic planning."
+    ] 
+  };
+
   return (
     <div className="min-h-screen bg-[#030712] text-slate-200 font-sans selection:bg-violet-500/30 overflow-x-hidden">
       
-      {/* SIDEBAR NAVIGATION */}
+      {/* SIDEBAR NAV */}
       <AnimatePresence>
         {isNavOpen && (
           <>
@@ -84,15 +96,15 @@ export default function Portfolio() {
       </AnimatePresence>
 
       <header className="fixed top-0 w-full z-50 px-6 py-5 flex justify-between items-center backdrop-blur-md bg-black/20 border-b border-white/5">
-        <h1 className="font-bold text-xl tracking-tighter bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent underline decoration-violet-500 underline-offset-4">RAKESH G</h1>
-        <button onClick={() => setIsNavOpen(true)} className="p-2 bg-white/5 rounded-lg border border-white/10">
+        <h1 className="font-bold text-xl tracking-tighter bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">RAKESH G</h1>
+        <button onClick={() => setIsNavOpen(true)} className="p-2 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all">
           <div className="w-6 h-0.5 bg-white mb-1.5"></div>
           <div className="w-6 h-0.5 bg-white mb-1.5"></div>
           <div className="w-4 h-0.5 bg-white"></div>
         </button>
       </header>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section className="pt-44 pb-32 px-6 flex flex-col items-center text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 text-xs font-mono text-violet-400">
           $ Hello, World!
@@ -104,22 +116,17 @@ export default function Portfolio() {
           Transforming complex datasets into <span className="text-violet-400">intelligent systems</span> and actionable insights.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <a href="#projects" className="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-violet-500 hover:text-white transition-all">View Projects</a>
-          <a href="resume.pdf" download className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all">Download CV</a>
+          <a href="#projects" className="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-violet-500 hover:text-white transition-all shadow-lg shadow-violet-500/10">View Projects</a>
+          <a href="resume.pdf" download className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all text-white">Download CV</a>
         </div>
       </section>
 
-      {/* NEW CORE COMPETENCY GRID UI */}
+      {/* CORE COMPETENCY GRID */}
       <section id="skills" className="max-w-7xl mx-auto px-6 py-32 bg-[#050a18]/30">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white mb-4">
             Core <span className="text-violet-500">Competency</span>
           </h2>
-          <div className="flex justify-center items-center gap-4">
-            <div className="h-px w-24 bg-gradient-to-r from-transparent to-violet-500"></div>
-            <div className="w-2 h-2 rotate-45 bg-violet-500"></div>
-            <div className="h-px w-24 bg-gradient-to-l from-transparent to-violet-500"></div>
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -132,7 +139,7 @@ export default function Portfolio() {
           <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
             <h3 className="text-xl font-bold text-white mb-8">AI & Machine Learning</h3>
             <div className="flex flex-wrap gap-3">
-              {['Scikit-learn', 'TensorFlow', 'LSTM', 'NLP', 'Deep RL'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
+              {['TensorFlow', 'Scikit-learn', 'LSTM', 'NLP', 'Reinforcement Learning'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
             </div>
           </div>
           <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
@@ -142,7 +149,7 @@ export default function Portfolio() {
             </div>
           </div>
           <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
-            <h3 className="text-xl font-bold text-white mb-8">Tools & Platforms</h3>
+            <h3 className="text-xl font-bold text-white mb-8">Tools & Frameworks</h3>
             <div className="flex flex-wrap gap-3">
               {['Flask', 'Next.js', 'Vercel', 'Git / GitHub', 'Figma'].map(s => <span key={s} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
             </div>
@@ -150,53 +157,18 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* EXPERIENCE SECTION */}
-      <section id="experience" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 border-l-4 border-violet-500 pl-4">Experience</h2>
-        <div className="space-y-12">
-          {experience.map((exp, i) => (
-            <div key={i} className="p-8 rounded-[32px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/20 transition-all">
-              <h4 className="font-bold text-2xl text-violet-400">{exp.role}</h4>
-              <p className="text-slate-300 font-medium">{exp.company} | {exp.date}</p>
-              <ul className="mt-4 space-y-2 text-slate-500">
-                {exp.points.map((p, j) => <li key={j}>• {p}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* EDUCATION JOURNEY */}
-      <section id="education" className="max-w-7xl mx-auto px-6 py-24 bg-gray-900/40">
-        <h2 className="text-3xl font-bold mb-12 border-l-4 border-violet-500 pl-4">Education Journey</h2>
-        <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
-          {education.map((edu, i) => (
-            <motion.div key={i} className="relative pl-10">
-              <div className={`absolute w-6 h-6 rounded-full -left-[13px] top-0 border-4 border-[#030712] ${edu.status === 'Current' ? 'bg-violet-500 animate-pulse shadow-[0_0_10px_#8b5cf6]' : 'bg-indigo-900'}`}></div>
-              <div className="p-8 bg-black/40 border border-gray-800 rounded-3xl shadow-xl hover:border-violet-500 transition-colors">
-                <span className="text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider bg-violet-500/20 text-violet-400">{edu.status}</span>
-                <h3 className="text-2xl font-bold text-violet-400 mt-4">{edu.degree}</h3>
-                <p className="text-gray-300">{edu.school}</p>
-                <p className="text-sm text-gray-500">{edu.date}</p>
-                {edu.grade && <p className="mt-4 text-violet-300 font-bold">{edu.grade}</p>}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
       {/* PROJECTS GRID */}
       <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-4xl font-extrabold mb-12 border-b border-gray-800 pb-4">Featured <span className="text-violet-500">Projects</span></h2>
+        <h2 className="text-5xl font-extrabold mb-12 border-b border-gray-800 pb-4">Featured <span className="text-violet-500">Projects</span></h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj, i) => (
-            <motion.div key={i} onClick={() => setSelectedProject(proj)} whileHover={{ y: -10 }} className="p-8 bg-[#0b0f1a] border border-white/5 rounded-[40px] cursor-pointer hover:border-violet-500/50 transition-all flex flex-col justify-between h-[400px]">
+            <motion.div key={i} onClick={() => setSelectedProject(proj)} whileHover={{ y: -10 }} className="p-8 bg-[#0b0f1a] border border-white/5 rounded-[40px] cursor-pointer hover:border-violet-500/50 transition-all flex flex-col justify-between h-[420px] shadow-2xl group">
               <div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {proj.tech.map(t => <span key={t} className="text-[10px] font-bold px-2 py-1 rounded bg-violet-500/10 text-violet-300 border border-violet-500/20">{t}</span>)}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {proj.tech.map(t => <span key={t} className="text-[10px] font-bold px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">{t}</span>)}
                 </div>
-                <h4 className="text-2xl font-bold text-white mb-4 leading-tight">{proj.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed line-clamp-3">Click to view details and repository →</p>
+                <h4 className="text-3xl font-bold text-white group-hover:text-violet-400 transition-colors mb-4">{proj.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed italic">Click to view Case Study & GitHub →</p>
               </div>
               <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-violet-500 group-hover:bg-violet-500 group-hover:text-white transition-all self-end">↗</div>
             </motion.div>
@@ -204,29 +176,37 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-32 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"></div>
-        <h2 className="text-5xl md:text-7xl font-extrabold mb-12 tracking-tighter text-white relative z-10">Get In <span className="text-violet-500">Touch</span></h2>
-        <div className="flex flex-wrap justify-center gap-10 relative z-10">
-          <a href="mailto:rakesh28.dev@gmail.com" className="flex items-center gap-4 bg-[#0b0f1a] p-6 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all shadow-lg text-white">
-            <span className="p-3 bg-violet-500/10 rounded-full text-violet-500 text-xl">📧</span> rakesh28.dev@gmail.com
-          </a>
-          <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="flex items-center gap-4 text-lg font-bold hover:text-violet-400 transition bg-white/5 px-8 py-6 rounded-[32px] border border-white/5 text-white">LinkedIn Profile 🔗</a>
-          <a href="https://github.com/Rakesh-developer28" target="_blank" className="flex items-center gap-4 text-lg font-bold hover:text-violet-400 transition bg-white/5 px-8 py-6 rounded-[32px] border border-white/5 text-white">GitHub Account 📁</a>
+      {/* VOLUNTEERING (Class Rep) */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <h2 className="text-3xl font-bold mb-12 border-l-4 border-violet-500 pl-4 text-white">Leadership</h2>
+        <div className="p-8 rounded-[40px] bg-[#0b0f1a] border border-white/5 shadow-xl max-w-3xl">
+          <h3 className="text-2xl font-bold text-violet-400">{volunteering.role}</h3>
+          <p className="text-slate-400 font-medium mb-4">{volunteering.org} | {volunteering.date}</p>
+          <ul className="space-y-3 text-slate-500 text-sm">
+            {volunteering.points.map((p, j) => <li key={j}>• {p}</li>)}
+          </ul>
         </div>
       </section>
 
-      <footer className="py-12 text-center text-slate-600 text-xs tracking-widest font-mono border-t border-gray-900 uppercase">
-        © 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology
-      </footer>
+      {/* CONTACT */}
+      <section id="contact" className="py-40 text-center relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"></div>
+        <h2 className="text-5xl md:text-7xl font-extrabold mb-12 tracking-tighter text-white relative z-10">Get In <span className="text-violet-500">Touch</span></h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-10 relative z-10">
+          <a href="mailto:rakesh28.dev@gmail.com" className="flex items-center gap-4 bg-[#0b0f1a] px-8 py-6 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all text-white">
+             rakesh28.dev@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="bg-white/5 px-8 py-6 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all text-white">LinkedIn</a>
+          <a href="https://github.com/Rakesh-developer28" target="_blank" className="bg-white/5 px-8 py-6 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all text-white">GitHub</a>
+        </div>
+      </section>
 
-      {/* PROJECT MODAL */}
+      {/* MODAL */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-black/95 backdrop-blur-md" />
-            <motion.div initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }} className="relative bg-[#0b0f1a] border border-white/10 p-10 rounded-[48px] max-w-2xl w-full text-white">
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-[#0b0f1a] border border-white/10 p-10 rounded-[48px] max-w-2xl w-full text-white">
               <h3 className="text-4xl font-bold text-violet-400 mb-6">{selectedProject.title}</h3>
               <p className="text-slate-400 leading-relaxed text-lg mb-8">{selectedProject.desc}</p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -237,6 +217,10 @@ export default function Portfolio() {
           </div>
         )}
       </AnimatePresence>
+
+      <footer className="py-12 text-center text-slate-600 text-xs tracking-widest font-mono border-t border-gray-900 uppercase">
+        © 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology
+      </footer>
     </div>
   );
 }
