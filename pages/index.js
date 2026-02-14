@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- PROFESSIONAL HEADER COMPONENT ---
+// --- CUSTOM COMPONENTS ---
+
 const Navbar = ({ setIsNavOpen }) => {
   return (
-    <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-[100] border-b border-white/5">
+    <nav className="fixed top-0 w-full bg-[#030712]/80 backdrop-blur-md z-[100] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* LOGO & PORTFOLIO NAME */}
         <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-500 text-xl group-hover:scale-110 group-hover:bg-violet-500 group-hover:text-white transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+          <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-500 text-xl group-hover:bg-violet-500 group-hover:text-white transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-white tracking-tighter text-lg leading-none uppercase">Portfolio</span>
@@ -36,7 +37,6 @@ const Navbar = ({ setIsNavOpen }) => {
   );
 };
 
-// --- MAIN PORTFOLIO PAGE ---
 export default function Portfolio() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -52,11 +52,6 @@ export default function Portfolio() {
   const education = [
     { degree: "Master of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "07/2025 – Present", status: "Current" },
     { degree: "Bachelor of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "08/2022 – 05/2025", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
-  ];
-
-  const experience = [
-    { role: "Data Analyst Intern", company: "Tech Vaseegrah", date: "07/2024 – 08/2024", points: ["Analyzed business data using Python and SQL.", "Built a real-world billing application using Flask."] },
-    { role: "AI & ML Trainee", company: "Rexroth Bosch Group", date: "Dec 2024 – Jan 2025", points: ["Training on industrial AI applications using sensor datasets."] }
   ];
 
   return (
@@ -81,92 +76,100 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
-      {/* HERO */}
-      <section className="pt-44 pb-32 px-6 flex flex-col items-center text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 text-xs font-mono text-violet-400">
+      {/* HERO SECTION */}
+      <section className="pt-44 pb-32 px-6 flex flex-col items-center text-center relative">
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] -z-10" />
+        
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 text-xs font-mono text-violet-400">
+          <span className="flex gap-1.5"><div className="w-2 h-2 rounded-full bg-red-500/50"></div><div className="w-2 h-2 rounded-full bg-yellow-500/50"></div><div className="w-2 h-2 rounded-full bg-green-500/50"></div></span>
           $ Hello, World!
         </motion.div>
-        <motion.h3 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-6xl md:text-8xl font-extrabold mb-6 tracking-tighter">
+
+        <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-sm uppercase tracking-[0.4em] font-bold text-slate-500 mb-4">I'm</motion.h2>
+        <motion.h3 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-7xl md:text-9xl font-extrabold mb-6 tracking-tighter">
           Rakesh <span className="text-violet-500">G</span>
         </motion.h3>
-        <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto italic mb-10">"Transforming complex data into intelligent solutions."</p>
+        
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="max-w-xl text-slate-400 leading-relaxed mb-12 text-lg italic">
+          "Transforming complex data into intelligent solutions."
+        </motion.p>
+        
         <div className="flex flex-wrap justify-center gap-4">
-          <a href="#projects" className="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-violet-500 hover:text-white transition-all">View Projects ↗</a>
+          <a href="#projects" className="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-violet-500 hover:text-white transition-all shadow-xl shadow-violet-500/10">View Projects ↗</a>
           <a href="resume.pdf" download className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all">Download CV</a>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section id="about" className="max-w-5xl mx-auto px-6 py-24 border-t border-white/5">
-        <h2 className="text-3xl font-bold mb-8 border-l-4 border-violet-500 pl-4">Professional Summary</h2>
-        <div className="grid lg:grid-cols-3 gap-12 text-gray-400 text-lg leading-relaxed">
-          <div className="lg:col-span-2">
-            <p className="mb-6">Aspiring Data Scientist and M.Sc. candidate at <span className="text-white font-semibold">Periyar Maniammai Institute of Science & Technology</span>. I specialize in building intelligent systems through <span className="text-violet-400 font-bold">Deep Learning</span> and <span className="text-violet-400 font-bold">NLP</span>.</p>
-            <p>I have experience aligning technical expertise with business needs during my internship at <span className="text-white font-semibold">Tech Vaseegrah</span>.</p>
-          </div>
-          <div className="bg-violet-500/5 border border-violet-500/20 p-8 rounded-3xl h-fit">
-            <h4 className="text-white font-bold mb-4 uppercase text-xs tracking-widest">Focus Areas</h4>
-            <ul className="space-y-3 text-sm italic">
-              <li>• Predictive Modeling (LSTM)</li>
-              <li>• Natural Language Processing</li>
-              <li>• Reinforcement Learning</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* CORE COMPETENCY GRID */}
-      <section id="skills" className="max-w-7xl mx-auto px-6 py-32 bg-[#050a18]/30">
+      <section id="skills" className="max-w-7xl mx-auto px-6 py-32">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white">Core <span className="text-violet-500">Competency</span></h2>
+          <div className="flex justify-center items-center gap-4 mt-4">
+            <div className="h-px w-24 bg-gradient-to-r from-transparent to-violet-500"></div>
+            <div className="w-2 h-2 rotate-45 bg-violet-500"></div>
+            <div className="h-px w-24 bg-gradient-to-l from-transparent to-violet-500"></div>
+          </div>
         </div>
+
         <div className="grid md:grid-cols-2 gap-8">
           <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
-            <h3 className="text-xl font-bold text-white mb-8 underline decoration-violet-500/50 underline-offset-8">Programming & Scripting</h3>
+            <h3 className="text-xl font-bold text-white mb-8 underline decoration-violet-500/30 underline-offset-8">Programming & Scripting</h3>
             <div className="flex flex-wrap gap-3">
-              {['Python', 'SQL', 'JavaScript', 'HTML5', 'Tailwind'].map(s => <span key={s} className="px-5 py-2 bg-white/5 border border-white/10 rounded-xl text-sm">{s}</span>)}
+              {['Python', 'SQL', 'JavaScript', 'HTML5', 'Tailwind'].map(s => <span key={s} className="px-5 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
             </div>
           </div>
           <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
-            <h3 className="text-xl font-bold text-white mb-8 underline decoration-violet-500/50 underline-offset-8">AI & Machine Learning</h3>
+            <h3 className="text-xl font-bold text-white mb-8 underline decoration-violet-500/30 underline-offset-8">AI & Machine Learning</h3>
             <div className="flex flex-wrap gap-3">
-              {['TensorFlow', 'Scikit-learn', 'LSTM', 'NLP', 'DRL'].map(s => <span key={s} className="px-5 py-2 bg-white/5 border border-white/10 rounded-xl text-sm">{s}</span>)}
+              {['TensorFlow', 'Scikit-learn', 'LSTM', 'NLP', 'DRL', 'Deep Learning'].map(s => <span key={s} className="px-5 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
+            </div>
+          </div>
+          <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
+            <h3 className="text-xl font-bold text-white mb-8 underline decoration-violet-500/30 underline-offset-8">Data & Analytics</h3>
+            <div className="flex flex-wrap gap-3">
+              {['Neo4j', 'SQLite', 'Pandas', 'NumPy', 'Power BI', 'Excel'].map(s => <span key={s} className="px-5 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
+            </div>
+          </div>
+          <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/30 transition-all shadow-xl">
+            <h3 className="text-xl font-bold text-white mb-8 underline decoration-violet-500/30 underline-offset-8">Tools & Platforms</h3>
+            <div className="flex flex-wrap gap-3">
+              {['Flask', 'Next.js', 'Vercel', 'Git / GitHub', 'Figma', 'Postman'].map(s => <span key={s} className="px-5 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-medium text-slate-300">{s}</span>)}
             </div>
           </div>
         </div>
       </section>
 
-      {/* PROJECTS */}
-      <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-4xl font-extrabold mb-12 border-b border-gray-800 pb-4">Featured <span className="text-violet-500">Projects</span></h2>
+      {/* PROJECTS SECTION */}
+      <section id="projects" className="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
+        <h2 className="text-5xl font-extrabold mb-16 tracking-tighter">Featured <span className="text-violet-500">Projects</span></h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj, i) => (
-            <motion.div key={i} onClick={() => setSelectedProject(proj)} whileHover={{ y: -10 }} className="p-8 bg-[#0b0f1a] border border-white/5 rounded-[40px] cursor-pointer hover:border-violet-500/50 transition-all h-[420px] flex flex-col justify-between">
+            <motion.div key={i} onClick={() => setSelectedProject(proj)} whileHover={{ y: -10 }} className="p-10 bg-[#0b0f1a] border border-white/5 rounded-[40px] cursor-pointer hover:border-violet-500/50 transition-all h-[440px] flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex flex-wrap gap-2 mb-8">
                   {proj.tech.map(t => <span key={t} className="text-[10px] font-bold px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">{t}</span>)}
                 </div>
-                <h4 className="text-3xl font-bold text-white group-hover:text-violet-400 mb-4 leading-tight">{proj.title}</h4>
-                <p className="text-slate-500 text-sm italic">Click to view Case Study →</p>
+                <h4 className="text-3xl font-bold text-white mb-4 leading-tight group-hover:text-violet-400">{proj.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 italic">Click to explore the detailed case study and GitHub repository →</p>
               </div>
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-violet-500 self-end">↗</div>
+              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-violet-500 self-end hover:bg-violet-500 hover:text-white transition-all">↗</div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* EDUCATION JOURNEY */}
-      <section id="education" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 border-l-4 border-violet-500 pl-4">Education Journey</h2>
-        <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
+      {/* EDUCATION SECTION */}
+      <section id="education" className="max-w-5xl mx-auto px-6 py-32 border-t border-white/5">
+        <h2 className="text-4xl font-bold mb-16 flex items-center gap-6">Education <div className="h-0.5 flex-1 bg-violet-500/20"></div></h2>
+        <div className="relative border-l border-white/10 ml-4 space-y-16">
           {education.map((edu, i) => (
             <div key={i} className="relative pl-10">
-              <div className={`absolute w-6 h-6 rounded-full -left-[13px] top-0 border-4 border-[#030712] ${edu.status === 'Current' ? 'bg-violet-500 animate-pulse' : 'bg-indigo-900'}`}></div>
+              <div className={`absolute w-4 h-4 rounded-full -left-[8px] top-0 border-2 border-[#030712] ${edu.status === 'Current' ? 'bg-violet-500 animate-pulse shadow-[0_0_10px_#8b5cf6]' : 'bg-slate-700'}`}></div>
               <div className="p-8 bg-[#0b0f1a] border border-white/5 rounded-3xl shadow-xl">
                 <span className="text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider bg-violet-500/20 text-violet-400">{edu.status}</span>
-                <h3 className="text-2xl font-bold text-violet-400 mt-4">{edu.degree}</h3>
-                <p className="text-gray-300 font-medium">{edu.school}</p>
-                <p className="text-sm text-gray-500 italic mt-1">{edu.date}</p>
+                <h3 className="text-2xl font-bold text-violet-400 mt-4 tracking-tight">{edu.degree}</h3>
+                <p className="text-slate-300 font-medium">{edu.school}</p>
+                <p className="text-sm text-slate-500 italic mt-1">{edu.date}</p>
                 {edu.grade && <p className="mt-4 text-violet-300 font-bold">{edu.grade}</p>}
               </div>
             </div>
@@ -174,47 +177,47 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* LEADERSHIP */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 border-l-4 border-violet-500 pl-4">Leadership</h2>
-        <div className="p-8 rounded-[40px] bg-[#0b0f1a] border border-white/5 max-w-3xl">
-          <h3 className="text-2xl font-bold text-violet-400">Class Representative</h3>
-          <p className="text-slate-400 text-sm font-medium mb-4">PMIST | 07/2025 – Present</p>
-          <ul className="space-y-3 text-slate-500 text-sm leading-relaxed">
-            <li>• Organized workshops, seminars, and technical events to enhance student skills.</li>
-            <li>• Collaborated with the university technical team to improve internal software systems.</li>
-            <li>• Promoted department growth through strategic planning and technical coordination.</li>
+      {/* EXPERIENCE SECTION (Leadership Restored) */}
+      <section id="experience" className="max-w-5xl mx-auto px-6 py-24">
+        <h2 className="text-4xl font-bold mb-16 flex items-center gap-6">Leadership <div className="h-0.5 flex-1 bg-violet-500/20"></div></h2>
+        <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 shadow-2xl">
+          <h3 className="text-2xl font-bold text-violet-400 tracking-tight">Class Representative</h3>
+          <p className="text-slate-400 font-medium mb-6 italic">PMIST | 07/2025 – Present</p>
+          <ul className="space-y-4 text-slate-500 text-sm leading-relaxed">
+            <li className="flex gap-3"><span className="text-violet-500">▹</span> Organized workshops, seminars, and technical events to enhance student skills.</li>
+            <li className="flex gap-3"><span className="text-violet-500">▹</span> Collaborated with the university technical team to improve internal software systems.</li>
+            <li className="flex gap-3"><span className="text-violet-500">▹</span> Promoted department growth through strategic planning and technical coordination.</li>
           </ul>
         </div>
       </section>
 
-      {/* CONTACT */}
+      {/* CONTACT SECTION */}
       <section id="contact" className="py-40 text-center relative border-t border-white/5">
-        <h2 className="text-5xl md:text-7xl font-extrabold mb-12 tracking-tighter text-white">Get In <span className="text-violet-500">Touch</span></h2>
-        <div className="flex flex-wrap justify-center gap-10">
-          <a href="mailto:rakesh28.dev@gmail.com" className="bg-[#0b0f1a] p-6 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all flex items-center gap-4 text-white">
-            <span className="p-3 bg-violet-500/10 rounded-full text-violet-500">📧</span> rakesh28.dev@gmail.com
+        <h2 className="text-6xl md:text-8xl font-extrabold mb-12 tracking-tighter text-white">Get In <span className="text-violet-500">Touch</span></h2>
+        <div className="flex flex-wrap justify-center gap-8 px-6">
+          <a href="mailto:rakesh28.dev@gmail.com" className="bg-[#0b0f1a] p-8 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all flex items-center gap-4 text-white shadow-xl">
+            <span className="p-4 bg-violet-500/10 rounded-2xl text-violet-500 text-2xl">📧</span> rakesh28.dev@gmail.com
           </a>
-          <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="bg-white/5 px-8 py-6 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all font-bold text-white">LinkedIn 🔗</a>
-          <a href="https://github.com/Rakesh-developer28" target="_blank" className="bg-white/5 px-8 py-6 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all font-bold text-white">GitHub 📁</a>
+          <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="bg-white/5 px-10 py-8 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all font-bold text-lg text-white">LinkedIn</a>
+          <a href="https://github.com/Rakesh-developer28" target="_blank" className="bg-white/5 px-10 py-8 rounded-[32px] border border-white/5 hover:text-violet-400 transition-all font-bold text-lg text-white">GitHub</a>
         </div>
       </section>
 
-      <footer className="py-12 text-center text-slate-600 text-[10px] tracking-[0.4em] font-mono border-t border-gray-900 uppercase">
+      <footer className="py-12 text-center text-slate-600 text-[10px] tracking-[0.5em] font-mono border-t border-gray-900 uppercase">
         © 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology
       </footer>
 
-      {/* MODAL */}
+      {/* PROJECT MODAL */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-black/95 backdrop-blur-md" />
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-[#0b0f1a] border border-white/10 p-10 rounded-[48px] max-w-2xl w-full text-white">
-              <h3 className="text-4xl font-bold text-violet-400 mb-6 tracking-tighter uppercase">{selectedProject.title}</h3>
-              <p className="text-slate-400 leading-relaxed text-lg mb-8 italic">{selectedProject.desc}</p>
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-[#0b0f1a] border border-white/10 p-12 rounded-[48px] max-w-2xl w-full text-white shadow-2xl">
+              <h3 className="text-4xl font-bold text-violet-400 mb-6 tracking-tight uppercase">{selectedProject.title}</h3>
+              <p className="text-slate-400 leading-relaxed text-lg mb-10 italic">{selectedProject.desc}</p>
               <div className="flex gap-4">
-                {selectedProject.link && <a href={selectedProject.link} target="_blank" className="flex-1 py-4 bg-white text-black text-center font-bold rounded-2xl hover:bg-violet-500 hover:text-white transition-all uppercase text-xs">View Code</a>}
-                <button onClick={() => setSelectedProject(null)} className="flex-1 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all uppercase text-xs">Close</button>
+                {selectedProject.link && <a href={selectedProject.link} target="_blank" className="flex-1 py-5 bg-white text-black text-center font-bold rounded-2xl hover:bg-violet-500 hover:text-white transition-all uppercase text-xs tracking-widest">View Code</a>}
+                <button onClick={() => setSelectedProject(null)} className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all uppercase text-xs tracking-widest">Close</button>
               </div>
             </motion.div>
           </div>
