@@ -53,8 +53,8 @@ export default function Home() {
   ];
 
   const education = [
-    { degree: "Master of Science in Data Science", school: "PMIST", date: "07/2025 – Present", status: "Current" },
-    { degree: "Bachelor of Science in Data Science", school: "PMIST", date: "08/2022 – 05/2025", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
+    { degree: "Master of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "07/2025 – Present", status: "Current" },
+    { degree: "Bachelor of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "08/2022 – 05/2025", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
   ];
 
   const experience = [
@@ -81,24 +81,7 @@ export default function Home() {
         
         <Navbar setIsNavOpen={setIsNavOpen} />
 
-        {/* MOBILE SIDEBAR */}
-        <AnimatePresence>
-          {isNavOpen && (
-            <>
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsNavOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110]" />
-              <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} className="fixed right-0 top-0 h-full w-72 bg-[#0b0f1a] border-l border-white/10 z-[120] p-8 shadow-2xl">
-                <button onClick={() => setIsNavOpen(false)} className="absolute top-6 right-6 text-2xl text-white">✕</button>
-                <div className="mt-12 flex flex-col gap-8 text-lg font-medium text-gray-300">
-                  {['About', 'Skills', 'Education', 'Projects', 'Contact'].map((item) => (
-                    <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsNavOpen(false)} className="hover:text-violet-400 uppercase tracking-widest text-sm">{item}</a>
-                  ))}
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-
-        {/* HERO */}
+        {/* HERO SECTION */}
         <section className="pt-56 pb-32 px-6 flex flex-col items-center text-center relative">
           <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-violet-600/5 rounded-full blur-[120px] -z-10" />
           
@@ -121,7 +104,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CORE COMPETENCY GRID (Restored Icon Set) */}
+        {/* SUMMARY SECTION */}
+        <section id="about" className="max-w-5xl mx-auto px-6 py-24 border-t border-white/5">
+          <h2 className="text-3xl font-bold mb-8 border-l-4 border-violet-500 pl-4">About Me</h2>
+          <p className="text-gray-400 text-lg leading-relaxed mb-6">
+            I am a skilled and detail-oriented Data Science professional currently pursuing an M.Sc. at PMIST. I specialize in building intelligent systems through Deep Learning and NLP. I have a proven track record of delivering real-world projects by developing solutions and analyzing complex datasets to create actionable insights.
+          </p>
+        </section>
+
+        {/* CORE COMPETENCY GRID */}
         <section id="skills" className="max-w-7xl mx-auto px-6 py-32 bg-[#050a18]/30">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white">Core <span className="text-violet-500">Competency</span></h2>
@@ -155,7 +146,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PROJECTS SECTION (Restored Grid) */}
+        {/* EXPERIENCE SECTION */}
+        <section id="experience" className="max-w-7xl mx-auto px-6 py-24">
+          <h2 className="text-3xl font-bold mb-12 border-l-4 border-violet-500 pl-4">Experience</h2>
+          <div className="space-y-12">
+            {experience.map((exp, i) => (
+              <div key={i} className="p-8 rounded-[32px] bg-[#0b0f1a] border border-white/5 hover:border-violet-500/20 transition-all text-white shadow-lg">
+                <h4 className="font-bold text-2xl text-violet-400">{exp.role}</h4>
+                <p className="text-slate-300 font-medium">{exp.company} | {exp.date}</p>
+                <ul className="mt-4 space-y-2 text-slate-500">
+                  {exp.points.map((p, j) => <li key={j}>• {p}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECTS GRID */}
         <section id="projects" className="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
           <h2 className="text-5xl font-extrabold mb-16 tracking-tighter text-white">Featured <span className="text-violet-500">Projects</span></h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -174,7 +181,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* LEADERSHIP (Restored Detail) */}
+        {/* LEADERSHIP */}
         <section className="max-w-5xl mx-auto px-6 py-24">
           <h2 className="text-4xl font-bold mb-16 flex items-center gap-6 text-white">Leadership <div className="h-0.5 flex-1 bg-violet-500/20"></div></h2>
           <div className="p-10 rounded-[40px] bg-[#0b0f1a] border border-white/5 shadow-2xl text-white">
@@ -189,23 +196,6 @@ export default function Home() {
         <footer className="py-12 text-center text-slate-600 text-[10px] tracking-[0.5em] font-mono border-t border-gray-900 uppercase">
           © 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology
         </footer>
-
-        {/* MODAL */}
-        <AnimatePresence>
-          {selectedProject && (
-            <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-black/95 backdrop-blur-md" />
-              <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-[#0b0f1a] border border-white/10 p-12 rounded-[48px] max-w-2xl w-full text-white shadow-2xl">
-                <h3 className="text-4xl font-bold text-violet-400 mb-6 tracking-tight uppercase">{selectedProject.title}</h3>
-                <p className="text-slate-400 leading-relaxed text-lg mb-10 italic">{selectedProject.desc}</p>
-                <div className="flex gap-4">
-                  {selectedProject.link && <a href={selectedProject.link} target="_blank" className="flex-1 py-5 bg-white text-black text-center font-bold rounded-2xl hover:bg-violet-500 hover:text-white transition-all uppercase text-xs tracking-widest font-bold">View Code</a>}
-                  <button onClick={() => setSelectedProject(null)} className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all uppercase text-xs tracking-widest font-bold">Close</button>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
       </div>
     </>
   );
