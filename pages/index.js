@@ -1,313 +1,242 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- Custom Components ---
+// --- GLOBAL STYLES (Add to globals.css for best results) ---
+// .glass { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="font-bold text-xl tracking-tighter uppercase">RAKESH G</h1>
-        <div className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
-          <a href="#about" className="hover:text-indigo-400 transition">About</a>
-          <a href="#education" className="hover:text-indigo-400 transition">Education</a>
-          <a href="#skills" className="hover:text-indigo-400 transition">Skills</a>
-          <a href="#experience" className="hover:text-indigo-400 transition">Experience</a>
-          <a href="#projects" className="hover:text-indigo-400 transition">Projects</a>
-          <a href="#contact" className="hover:text-indigo-400 transition">Connect</a>
-        </div>
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl text-white">
-          {isOpen ? "✕" : "☰"}
-        </button>
-      </div>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-gray-950 border-b border-gray-800 overflow-hidden"
-          >
-            <div className="flex flex-col p-6 gap-4 text-center text-gray-300">
-              <a href="#about" onClick={() => setIsOpen(false)}>About</a>
-              <a href="#education" onClick={() => setIsOpen(false)}>Education</a>
-              <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
-              <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
-              <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
-              <a href="#contact" onClick={() => setIsOpen(false)}>Connect</a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
-};
-
-const PortfolioBot = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: "bot", text: "Hi! I'm Rakesh's AI assistant. Ask me about his projects, education, or skills!" }
-  ]);
-  const [input, setInput] = useState("");
-
-  const handleSend = (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    const userMsg = { role: "user", text: input };
-    setMessages((prev) => [...prev, userMsg]);
-    setTimeout(() => {
-      let botResponse = "That's a great question! Rakesh is skilled in Python, ML, and NLP. Check his 'Projects' section for more details.";
-      const query = input.toLowerCase();
-      if (query.includes("project")) botResponse = "Rakesh has built an LSTM Stock Predictor, a Fake Review Detector, and an RL-based Hill Climb AI!";
-      if (query.includes("education")) botResponse = "He is currently pursuing an M.Sc. in Data Science at Periyar Maniammai Institute of Science & Technology.";
-      if (query.includes("intern") || query.includes("experience")) botResponse = "He interned as a Data Analyst at Tech Vaseegrah and trained with Rexroth Bosch Group.";
-      setMessages((prev) => [...prev, { role: "bot", text: botResponse }]);
-    }, 1000);
-    setInput("");
-  };
-
-  return (
-    <div className="fixed bottom-6 right-6 z-[200]">
-      <button onClick={() => setIsOpen(!isOpen)} className="bg-indigo-600 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-indigo-700 transition-all hover:scale-110">
-        {isOpen ? "✕" : "💬"}
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div initial={{ opacity: 0, scale: 0.8, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8, y: 20 }} className="absolute bottom-20 right-0 w-80 h-96 bg-gray-900 border border-gray-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-white">
-            <div className="bg-indigo-600 p-4 font-bold text-center">Rakesh-Bot AI</div>
-            <div className="flex-1 p-4 overflow-y-auto space-y-4 text-sm">
-              {messages.map((m, i) => (
-                <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[80%] p-3 rounded-2xl ${m.role === "user" ? "bg-indigo-600" : "bg-gray-800 border border-gray-700 text-gray-300"}`}>{m.text}</div>
-                </div>
-              ))}
-            </div>
-            <form onSubmit={handleSend} className="p-4 border-t border-gray-800 bg-gray-950 flex gap-2">
-              <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask me anything..." className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 outline-none focus:border-indigo-500 text-xs" />
-              <button type="submit" className="bg-indigo-600 px-3 py-2 rounded-lg text-xs font-bold">Send</button>
-            </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-const ProjectModal = ({ project, onClose }) => (
-  <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
-    <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-gray-900 border border-gray-700 p-8 rounded-3xl max-w-lg w-full shadow-2xl text-white">
-      <h3 className="text-3xl font-bold text-indigo-400">{project.title}</h3>
-      <p className="mt-6 text-gray-300 leading-relaxed">{project.desc}</p>
-      {project.link && (
-        <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-4 text-indigo-400 underline">View Repository on GitHub →</a>
-      )}
-      <button onClick={onClose} className="mt-8 w-full py-3 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-700 transition">Close Details</button>
-    </motion.div>
-  </div>
-);
-
-// --- Main Page ---
-
-export default function Home() {
+export default function Portfolio() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const skills = [
-    { name: "Python", level: 95 },
-    { name: "SQL & Database (Neo4j)", level: 90 },
-    { name: "Machine Learning (Scikit-learn)", level: 85 },
-    { name: "Deep Learning (TensorFlow/LSTM)", level: 80 },
-    { name: "Full Stack (Flask/Next.js)", level: 85 },
-  ];
-
   const projects = [
-    { title: "Stock Market Prediction (LSTM)", tech: ["Python", "LSTM", "Deep Learning"], desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing, feature engineering, and model tuning to improve prediction accuracy.", link: "https://github.com/Rakesh-developer28/stock_prediction" },
+    { title: "Stock Market Prediction (LSTM)", tech: ["Python", "LSTM", "TensorFlow"], desc: "Designed and trained LSTM models for time series forecasting of stock prices using historical market data. Implemented data preprocessing and feature engineering.", link: "https://github.com/Rakesh-developer28/stock_prediction" },
     { title: "Fake Product Review Detection", tech: ["NLP", "Python", "ML"], desc: "Developed a machine learning model to classify product reviews as real or fake using NLP techniques for text preprocessing and feature extraction." },
-    { title: "Menu vs Delivery NLP Analysis", tech: ["Python", "NLP", "Analytics"], desc: "Analyzed food app reviews to compare menu quality vs delivery impact using sentiment analysis and keyword extraction.", link: "https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis" },
-    { title: "Neural Pilot – Hill Climb AI", tech: ["Python", "TensorFlow", "Deep RL"], desc: "Built a Deep Reinforcement Learning agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk.", link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI" },
-    { title: "Finance Tracker", tech: ["Python", "Flask", "SQLite", "Chart.js"], desc: "Personal finance tracker mini-project using Flask, SQLite, and Chart.js for real-time visualization.", link: "https://github.com/Rakesh-developer28/finance_tracker" }
+    { title: "Neural Pilot – Hill Climb AI", tech: ["Python", "Deep RL", "Pygame"], desc: "Developed a DRL agent for a physics-based control problem using TensorFlow, Pygame, and Pymunk.", link: "https://github.com/Rakesh-developer28/Neural-Pilot-Hill-Climb-AI" },
+    { title: "Finance Tracker", tech: ["Flask", "SQLite", "Chart.js"], desc: "Personal finance tracker built using Flask and SQLite with dynamic data visualization.", link: "https://github.com/Rakesh-developer28/finance_tracker" },
+    { title: "Menu vs Delivery NLP", tech: ["Python", "NLP", "NLTK"], desc: "Analyzed food app reviews to compare menu quality vs delivery impact via sentiment analysis.", link: "https://github.com/Rakesh-developer28/menu-delivery-nlp-analysis" }
   ];
 
   const education = [
-    { degree: "Master of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "07/2025 – Present", location: "Thanjavur, India", status: "Current" },
-    { degree: "Bachelor of Science in Data Science", school: "Periyar Maniammai Institute of Science & Technology", date: "08/2022 – 05/2025", location: "Thanjavur, India", grade: "CGPA: 7.51 / 10.0", status: "Completed" }
-  ];
-
-  const experience = [
-    { role: "Data Analyst Intern", company: "Tech Vaseegrah", date: "07/2024 – 08/2024", points: ["Analyzed and visualized business data using Python, Excel, and SQL.", "Built a real-world billing and dashboard web application using Flask.", "Integrated user authentication and billing modules with database connectivity."] },
-    { role: "AI & ML Trainee", company: "Rexroth Bosch Group", date: "Dec 2024 – Jan 2025", points: ["Intensive training on industrial AI applications.", "Worked with real-world sensor datasets to build predictive ML models.", "Applied deep learning concepts to industrial manufacturing cases."] }
-  ];
-
-  const certifications = [
-    "Data Analysis with Python (Pandas, NumPy, Matplotlib)",
-    "Google Analytics for Advanced (Tracking & Segmentation)",
-    "Hands-on Big Data Analysis & Data Science",
-    "Technical Workshop: Neural Networks (Neurons to Networks)"
-  ];
-
-  const volunteering = [
-    { 
-      role: "Class Representative", 
-      org: "Periyar Maniammai Institute of Science & Technology", 
-      date: "07/2025 – Present", 
-      points: [
-        "Organized workshops, seminars, and technical events to enhance student skills.", 
-        "Collaborated with the university technical team to improve internal software systems.", 
-        "Promoted department growth through strategic planning and technical coordination."
-      ] 
-    }
+    { degree: "Master of Science in Data Science", school: "PMIST", date: "07/2025 – Present", status: "Current" },
+    { degree: "Bachelor of Science in Data Science", school: "PMIST", date: "08/2022 – 05/2025", grade: "CGPA: 7.51", status: "Completed" }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-indigo-500">
-      <Navbar />
-      <PortfolioBot />
+    <div className="min-h-screen bg-[#030712] text-slate-200 font-sans selection:bg-violet-500/30 overflow-x-hidden">
+      
+      {/* MOBILE SIDEBAR NAV */}
+      <AnimatePresence>
+        {isNavOpen && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsNavOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]" />
+            <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25, stiffness: 200 }} className="fixed right-0 top-0 h-full w-72 bg-[#0b0f1a] border-l border-white/10 z-[110] p-8 shadow-2xl">
+              <button onClick={() => setIsNavOpen(false)} className="absolute top-6 right-6 text-2xl">✕</button>
+              <div className="mt-12 flex flex-col gap-8 text-lg font-medium">
+                {['About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
+                  <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsNavOpen(false)} className="hover:text-violet-400 transition-colors uppercase tracking-widest text-sm">{item}</a>
+                ))}
+              </div>
+              <div className="absolute bottom-10 left-8 flex gap-6 text-xl text-slate-400">
+                <a href="https://github.com/Rakesh-developer28" target="_blank">📁</a>
+                <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank">🔗</a>
+                <a href="mailto:rakesh28.dev@gmail.com">📧</a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* HEADER */}
+      <header className="fixed top-0 w-full z-50 px-6 py-5 flex justify-between items-center backdrop-blur-md bg-black/20 border-b border-white/5">
+        <h1 className="font-bold text-xl tracking-tighter bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">RAKESH G</h1>
+        <button onClick={() => setIsNavOpen(true)} className="p-2 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all">
+          <div className="w-6 h-0.5 bg-white mb-1.5"></div>
+          <div className="w-6 h-0.5 bg-white mb-1.5"></div>
+          <div className="w-4 h-0.5 bg-white"></div>
+        </button>
+      </header>
 
       {/* HERO SECTION */}
-      <section className="min-h-screen flex items-center justify-center px-6 text-center">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <h1 className="text-6xl md:text-8xl font-extrabold bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-500 bg-clip-text text-transparent leading-tight">AI • ML • Data Science</h1>
-          <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed italic">"Transforming complex datasets into intelligent systems and actionable insights."</p>
-          <p className="mt-4 text-gray-300 font-medium tracking-wide">RAKESH G • M.Sc. Data Science Student</p>
-          <div className="mt-10 flex justify-center gap-6 flex-wrap">
-            <a href="#projects" className="px-8 py-3 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20 text-white">View Projects</a>
-            <a href="resume.pdf" download className="px-8 py-3 border border-gray-700 rounded-xl font-bold hover:border-indigo-500 transition hover:bg-gray-900 text-white">Download Resume</a>
-          </div>
+      <section className="pt-44 pb-32 px-6 flex flex-col items-center text-center relative">
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[120px] -z-10" />
+        
+        {/* Terminal Header */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 text-xs font-mono text-violet-400">
+          <span className="flex gap-1.5"><div className="w-2 h-2 rounded-full bg-red-500/50"></div><div className="w-2 h-2 rounded-full bg-yellow-500/50"></div><div className="w-2 h-2 rounded-full bg-green-500/50"></div></span>
+          $ Hello, World!
+        </motion.div>
+
+        <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-sm uppercase tracking-[0.4em] font-bold text-slate-500 mb-4">I'm</motion.h2>
+        <motion.h3 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-6xl md:text-8xl font-extrabold mb-6 tracking-tighter">
+          <span className="text-white">Rakesh</span> <span className="text-violet-500">G</span>
+        </motion.h3>
+        <motion.h4 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="text-2xl md:text-3xl font-bold text-slate-300 mb-8">Data Science Professional</motion.h4>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="max-w-xl text-slate-400 leading-relaxed mb-12 text-lg">
+          Transforming complex datasets into <span className="text-violet-400">intelligent systems</span> and actionable insights through high-performance Deep Learning and NLP architectures.
+        </motion.p>
+        
+        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.6 }} className="flex flex-wrap justify-center gap-4">
+          <a href="#projects" className="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-violet-500 hover:text-white transition-all duration-300 flex items-center gap-2 shadow-xl shadow-violet-500/10">View Projects ↗</a>
+          <a href="resume.pdf" download className="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-bold hover:bg-white/10 transition-all">Get CV</a>
         </motion.div>
       </section>
 
-      {/* SUMMARY */}
-      <section id="about" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4 text-white">Professional Summary</h2>
-        <div className="grid lg:grid-cols-3 gap-12 text-gray-400 text-lg leading-relaxed">
-          <div className="lg:col-span-2">
-            <p className="mb-6">I am a skilled and detail-oriented <span className="text-indigo-400 font-semibold">Data Science fresher</span> currently pursuing an M.Sc. at <span className="text-indigo-400">Periyar Maniammai Institute of Science & Technology</span>. I have a proven track record of delivering real-world projects by developing solutions and analyzing complex datasets to create actionable insights.</p>
-            <p>Adept at aligning technical expertise with business needs, I specialize in <span className="text-indigo-400">Deep Learning (LSTM)</span>, <span className="text-indigo-400">NLP</span>, and <span className="text-indigo-400">Reinforcement Learning</span>. I am eager to contribute innovative data-driven solutions to a dynamic organization.</p>
+      {/* SUMMARY / ABOUT */}
+      <section id="about" className="max-w-5xl mx-auto px-6 py-24 border-t border-white/5">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-4xl font-bold mb-8 flex items-center gap-4">About <span className="h-px flex-1 bg-violet-500/30"></span></h2>
+            <p className="text-slate-400 leading-relaxed text-lg mb-6">
+              I specialize in bridging the gap between <span className="text-white">Software Engineering</span> and <span className="text-white">Advanced Analytics</span>. My work centers on building predictive models and full-stack data applications that solve real-world problems.
+            </p>
+            <div className="flex gap-4">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex-1">
+                <div className="text-2xl font-bold text-violet-500">M.Sc.</div>
+                <div className="text-xs uppercase tracking-widest text-slate-500">Candidate</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex-1">
+                <div className="text-2xl font-bold text-violet-500">7.51</div>
+                <div className="text-xs uppercase tracking-widest text-slate-500">B.Sc. CGPA</div>
+              </div>
+            </div>
           </div>
-          <div className="bg-indigo-500/5 border border-indigo-500/20 p-8 rounded-3xl h-fit">
-            <h4 className="text-white font-bold mb-4">Core Focus Areas</h4>
-            <ul className="space-y-3 text-sm">
-              <li>• Predictive Modeling (LSTM)</li>
-              <li>• Natural Language Processing</li>
-              <li>• Deep Reinforcement Learning</li>
-              <li>• Full-Stack Data Apps (Flask)</li>
+          <div className="p-8 rounded-3xl bg-violet-600/5 border border-violet-500/20 relative overflow-hidden group">
+            <div className="absolute -right-4 -top-4 w-24 h-24 bg-violet-500/20 rounded-full blur-2xl group-hover:bg-violet-500/40 transition-all duration-700" />
+            <h4 className="text-violet-400 font-bold mb-6 text-sm uppercase tracking-widest">Focus Areas</h4>
+            <ul className="space-y-4 font-medium text-slate-300">
+              {['Predictive Modeling (LSTM)', 'Natural Language Processing', 'Deep Reinforcement Learning', 'Full-Stack Data Apps'].map((area) => (
+                <li key={area} className="flex items-center gap-3">
+                   <div className="w-1.5 h-1.5 rounded-full bg-violet-500"></div> {area}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </section>
 
-      {/* EDUCATION JOURNEY */}
-      <section id="education" className="bg-gray-900/40 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Education Journey</h2>
-          <div className="relative border-l-2 border-indigo-800 ml-4 space-y-16">
-            {education.map((edu, i) => (
-              <motion.div key={i} className="relative pl-10" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                <div className={`absolute w-6 h-6 rounded-full -left-[13px] top-0 border-4 border-gray-950 ${edu.status === 'Current' ? 'bg-indigo-500 animate-pulse' : 'bg-indigo-900'}`}></div>
-                <div className="p-8 bg-black/40 border border-gray-800 rounded-3xl shadow-xl hover:border-indigo-500 transition-colors">
-                  <span className="text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-400">{edu.status}</span>
-                  <h3 className="text-2xl font-bold text-indigo-400 mt-4">{edu.degree}</h3>
-                  <p className="text-gray-300 font-medium">{edu.school}</p>
-                  <p className="text-sm text-gray-500">{edu.date} | {edu.location}</p>
-                  {edu.grade && <p className="mt-4 text-indigo-300 font-bold text-lg">{edu.grade}</p>}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      {/* PROJECT GRID */}
+      <section id="projects" className="max-w-7xl mx-auto px-6 py-24 bg-[#050a18]/50">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+          <h2 className="text-5xl font-extrabold tracking-tighter">Featured <br /><span className="text-violet-500">Projects</span></h2>
+          <p className="text-slate-500 text-sm max-w-xs font-mono tracking-tighter">04+ Successful Deployments. Scaling my knowledge horizontally.</p>
         </div>
-      </section>
-
-      {/* SKILLS */}
-      <section id="skills" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 text-white">Technical Toolbox</h2>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
-            {skills.map((skill, i) => (
-              <div key={i} className="space-y-2">
-                <div className="flex justify-between text-sm font-medium"><span>{skill.name}</span><span className="text-indigo-400">{skill.level}%</span></div>
-                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <motion.div initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: true }} transition={{ duration: 1 }} className="h-full bg-gradient-to-r from-indigo-600 to-purple-500" />
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl"><h4 className="text-indigo-400 font-bold mb-3">Programming</h4><p className="text-sm text-gray-400">Python, SQL, JavaScript, HTML, CSS (Tailwind)</p></div>
-            <div className="p-6 bg-black/40 border border-gray-800 rounded-3xl"><h4 className="text-indigo-400 font-bold mb-3">Data & AI</h4><p className="text-sm text-gray-400">ML, NLP, LSTM, Neo4j, PowerBI, Excel</p></div>
-          </div>
-        </div>
-      </section>
-
-      {/* EXPERIENCE */}
-      <section id="experience" className="bg-gray-900/40 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 text-white">Experience</h2>
-          <div className="space-y-12">
-            {experience.map((exp, i) => (
-              <motion.div key={i} className="relative border-l-2 border-indigo-500 pl-8" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                <div className="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9px] top-1"></div>
-                <h3 className="text-2xl font-bold text-indigo-400">{exp.role}</h3>
-                <p className="text-gray-300 font-medium">{exp.company}</p>
-                <p className="text-sm text-gray-500 mb-4">{exp.date}</p>
-                <ul className="space-y-2 text-gray-400">{exp.points.map((p, j) => <li key={j}>• {p}</li>)}</ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROJECTS */}
-      <section id="projects" className="max-w-7xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold mb-12 text-white">Featured Projects</h2>
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj, i) => (
-            <motion.div key={i} onClick={() => setSelectedProject(proj)} whileHover={{ y: -10 }} className="p-8 bg-gray-900/30 border border-gray-800 rounded-3xl cursor-pointer hover:border-indigo-500 transition-all group">
-              <h4 className="text-2xl font-bold text-white group-hover:text-indigo-400 mb-4">{proj.title}</h4>
-              <div className="flex flex-wrap gap-2">{proj.tech.map(t => <span key={t} className="text-[10px] uppercase tracking-widest bg-indigo-500/10 px-2 py-1 rounded text-indigo-300 font-bold border border-indigo-500/20">{t}</span>)}</div>
-              <p className="mt-6 text-gray-500 text-sm italic group-hover:text-gray-400">View Detail & GitHub →</p>
+            <motion.div 
+              key={i} 
+              whileHover={{ y: -8 }}
+              onClick={() => setSelectedProject(proj)}
+              className="p-10 bg-[#0b0f1a] border border-white/5 rounded-[40px] cursor-pointer hover:border-violet-500/50 transition-all duration-300 group flex flex-col justify-between h-[420px] shadow-lg"
+            >
+              <div>
+                <div className="flex gap-2 mb-8">
+                  {proj.tech.map(t => <span key={t} className="text-[10px] font-bold px-3 py-1 rounded-full bg-white/5 text-slate-400 border border-white/5">{t}</span>)}
+                </div>
+                <h3 className="text-3xl font-bold mb-4 leading-tight group-hover:text-violet-400 transition-colors">{proj.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed line-clamp-3">Click to explore the detailed project architecture and results.</p>
+              </div>
+              <div className="pt-8 border-t border-white/5 flex justify-between items-center">
+                <span className="text-xs uppercase tracking-widest font-bold text-violet-500">Case Study</span>
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-violet-500 group-hover:text-white transition-all">↗</div>
+              </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* CERTIFICATIONS & VOLUNTEERING */}
-      <section className="bg-gray-900/40 py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-          <div>
-            <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4 text-white">Certifications</h2>
-            <ul className="space-y-4">
-              {certifications.map((c, i) => <li key={i} className="text-gray-400 bg-black/40 p-4 border border-gray-800 rounded-xl transition hover:border-indigo-500">• {c}</li>)}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4 text-white">Leadership</h2>
-            {volunteering.map((v, i) => (
-              <div key={i} className="bg-black/40 p-8 border border-gray-800 rounded-3xl shadow-xl">
-                <h3 className="text-xl font-bold text-indigo-400">{v.role}</h3>
-                <p className="text-gray-500 text-sm mb-4">{v.org} | {v.date}</p>
-                <ul className="space-y-2 text-gray-400 text-sm">{v.points.map((p, j) => <li key={j}>• {p}</li>)}</ul>
+      {/* EXPERIENCE & EDUCATION SPLIT */}
+      <section className="max-w-5xl mx-auto px-6 py-32 grid md:grid-cols-2 gap-24">
+        {/* Education */}
+        <div id="education">
+          <h2 className="text-3xl font-bold mb-12 flex items-center gap-4 text-violet-500">Education <div className="h-0.5 flex-1 bg-violet-500/20"></div></h2>
+          <div className="space-y-10">
+            {education.map((edu, i) => (
+              <div key={i} className="relative pl-8 border-l border-white/10">
+                <div className={`absolute -left-1.5 top-0 w-3 h-3 rounded-full border-2 border-[#030712] ${edu.status === 'Current' ? 'bg-violet-500 animate-pulse shadow-[0_0_10px_#8b5cf6]' : 'bg-slate-700'}`}></div>
+                <h4 className="font-bold text-xl mb-1">{edu.degree}</h4>
+                <p className="text-slate-400 text-sm mb-2">{edu.school}</p>
+                <div className="flex gap-3 text-[10px] font-bold uppercase tracking-widest">
+                  <span className="text-slate-500">{edu.date}</span>
+                  {edu.grade && <span className="text-violet-400">{edu.grade}</span>}
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* CONNECT */}
-      <section id="contact" className="py-24 text-center">
-        <h2 className="text-4xl font-bold mb-12 border-l-4 border-indigo-500 pl-4 inline-block text-white">Let's Connect</h2>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-10">
-          <a href="mailto:rakesh28.dev@gmail.com" className="flex items-center gap-4 text-xl hover:text-indigo-400 transition bg-black/40 p-6 rounded-3xl border border-gray-800 w-full md:w-auto"><span className="p-3 bg-indigo-500/10 rounded-full text-indigo-500">📧</span> rakesh28.dev@gmail.com</a>
-          <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="flex items-center gap-4 text-xl hover:text-indigo-400 transition bg-black/40 p-6 rounded-3xl border border-gray-800 w-full md:w-auto"><span className="p-3 bg-indigo-500/10 rounded-full text-indigo-500">🔗</span> LinkedIn Profile</a>
-          <a href="https://github.com/Rakesh-developer28" target="_blank" className="flex items-center gap-4 text-xl hover:text-indigo-400 transition bg-black/40 p-6 rounded-3xl border border-gray-800 w-full md:w-auto"><span className="p-3 bg-indigo-500/10 rounded-full text-indigo-500">📁</span> GitHub Account</a>
+        {/* Experience */}
+        <div id="experience">
+          <h2 className="text-3xl font-bold mb-12 flex items-center gap-4 text-violet-500">Experience <div className="h-0.5 flex-1 bg-violet-500/20"></div></h2>
+          <div className="space-y-12">
+            <div className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:border-violet-500/20 transition-colors">
+              <h4 className="font-bold text-xl text-white">Data Analyst Intern</h4>
+              <p className="text-violet-400 text-sm font-medium mb-4">Tech Vaseegrah | 07/2024 – 08/2024</p>
+              <ul className="text-slate-500 text-sm space-y-3 leading-relaxed">
+                <li>• Optimized business decision speed via custom SQL and Python dashboards.</li>
+                <li>• Built Flask-based production billing applications with SQLite integration.</li>
+              </ul>
+            </div>
+            <div className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:border-violet-500/20 transition-colors">
+              <h4 className="font-bold text-xl text-white">AI & ML Trainee</h4>
+              <p className="text-violet-400 text-sm font-medium mb-4">Rexroth Bosch | 2024 – 2025</p>
+              <p className="text-slate-500 text-sm leading-relaxed">Industrial training on predictive maintenance using sensor datasets and deep learning.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <AnimatePresence>{selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}</AnimatePresence>
+      {/* GET IN TOUCH SECTION */}
+      <section id="contact" className="max-w-5xl mx-auto px-6 py-40 text-center relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"></div>
+        <h2 className="text-7xl font-extrabold mb-8 tracking-tighter text-white relative z-10">Get In <span className="text-violet-500">Touch</span></h2>
+        <p className="text-slate-400 mb-12 max-w-lg mx-auto italic">Open to Data Science internships and ML research collaborations.</p>
+        
+        <div className="flex flex-col items-center gap-6 relative z-10">
+          <a href="mailto:rakesh28.dev@gmail.com" className="group flex items-center gap-4 bg-[#0b0f1a] px-8 py-6 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all w-full max-w-md shadow-lg">
+            <div className="w-12 h-12 rounded-2xl bg-violet-500/10 flex items-center justify-center text-violet-500 text-xl">📧</div>
+            <div className="text-left">
+              <div className="text-[10px] uppercase font-bold text-slate-500">Email Me</div>
+              <div className="text-slate-200 font-medium">rakesh28.dev@gmail.com</div>
+            </div>
+          </a>
+          
+          <div className="flex gap-4 w-full max-w-md">
+            <a href="https://www.linkedin.com/in/rakeshgdev" target="_blank" className="flex-1 bg-white/5 p-6 rounded-[32px] border border-white/5 hover:bg-white text-black transition-all flex items-center justify-center gap-2 font-bold group">
+              <span className="text-black group-hover:text-black">LinkedIn</span>
+            </a>
+            <a href="https://github.com/Rakesh-developer28" target="_blank" className="flex-1 bg-white/5 p-6 rounded-[32px] border border-white/5 hover:border-violet-500 transition-all flex items-center justify-center gap-2 font-bold">
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
-      <footer className="py-12 text-center text-gray-600 text-sm border-t border-gray-900">
-        <p className="font-medium uppercase tracking-widest tracking-[0.2em]">© 2026 RAKESH G | Periyar Maniammai Institute of Science & Technology</p>
+      {/* FOOTER */}
+      <footer className="py-12 text-center text-slate-600 text-xs tracking-widest font-mono border-t border-white/5 uppercase">
+        © 2026 Rakesh G • Built with Next.js & Framer Motion
       </footer>
+
+      {/* MODAL OVERLAY */}
+      <AnimatePresence>
+        {selectedProject && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-black/95 backdrop-blur-md" />
+            <motion.div initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }} className="relative bg-[#0b0f1a] border border-white/10 p-10 rounded-[48px] max-w-2xl w-full shadow-2xl">
+              <div className="flex gap-2 mb-6">
+                {selectedProject.tech.map(t => <span key={t} className="text-[10px] font-bold px-3 py-1 rounded-full bg-violet-500 text-white">{t}</span>)}
+              </div>
+              <h3 className="text-4xl font-bold text-white mb-6 leading-tight">{selectedProject.title}</h3>
+              <p className="text-slate-400 leading-relaxed text-lg mb-8">{selectedProject.desc}</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                {selectedProject.link && <a href={selectedProject.link} target="_blank" className="flex-1 py-4 bg-white text-black text-center font-bold rounded-2xl hover:bg-violet-500 hover:text-white transition-all">View Repository</a>}
+                <button onClick={() => setSelectedProject(null)} className="flex-1 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all">Close Details</button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }
